@@ -115,8 +115,8 @@ public class Move {
 			{
 				//if the pawn moves straight
 				if (this.origin.x == this.destination.x)
-					//if the destination has no piece on it
-					if (game.board[this.destination.x][this.destination.y] == 0)
+					//if the destination has no piece on it (7 = en passant tag)
+					if (game.board[this.destination.x][this.destination.y] == 0 || Math.abs(game.board[this.destination.x][this.destination.y]) == 7)
 						return true;
 					else
 						return false;
