@@ -34,6 +34,7 @@ public class Game {
 	 * 4=rook
 	 * 5=Queen
 	 * 6=King
+	 * 7=en passant
 	 * positive values = white, negative values = black
 	 */
 	int[][] board;
