@@ -66,7 +66,7 @@ public class Game {
 	 * @param piece the piece to search for
 	 * @return the List of all positions the piece was found
 	 */
-	public ArrayList<Point> getPosition(int piece)
+	public ArrayList<Point> getPositions(int piece)
 	{
 		ArrayList<Point> positions = new ArrayList<Point>();
 		
