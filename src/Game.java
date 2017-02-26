@@ -79,4 +79,46 @@ public class Game {
 		
 		return positions;
 	}
+
+	/**
+	 * checks if the player that has to move is in check
+	 * 
+	 * @return whether or not the position is check
+	 */
+	public boolean isCheck()
+	{
+		try
+		{
+			ArrayList<Point> kingpositions = this.getPositions(6*this.player);
+			//check if no king is found
+			if (kingpositions.size() < 1)
+				return false;
+			
+			Point kingposition = kingpositions.get(0);
+			
+			//change the player
+			this.player *= -1;
+			
+			for (int i = 0; i < this.board.length; i++)
+				for (int j = 0; j < this.board[i].length; j++)
+					//if a piece of the player that is not to move is on the field
+					if (this.player * this.board[i][j] < 0)
+						//check if the piece can move to the King
+						if(new Move(this, new Point(i,j), kingposition).isPossible(this))
+						{
+							//change the player back
+							this.player *= 1;
+							return true;
+						}
+			
+			//change the player back
+			this.player *= 1;
+			return false;
+		}
+		catch(Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
 }
