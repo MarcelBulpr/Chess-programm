@@ -15,8 +15,33 @@ public class Move {
 	 * @param game the game where the move is made
 	 * @param origin the position the piece came from
 	 * @param destination the position the piece went to
+	 * @param promotion the piece a pawn promoted to
 	 */
 	public Move(Game game, Point origin, Point destination, int promotion)
+	{
+		try
+		{
+			this.origin = origin;
+			this.destination = destination;
+			//code to be added
+			//the code should take the game, the Points and the promotion and calculate the other values of this Class
+			//.x=buttonID/8
+			//.y=buttonID%8
+		}
+		catch (Error r)
+		{
+			System.out.println(r.getMessage());
+		}
+	}
+	
+	/**
+	 * Builder to create a move out of a game an origin and an destination
+	 * 
+	 * @param game the game where the move is made
+	 * @param origin the position the piece came from
+	 * @param destination the position the piece went to
+	 */
+	public Move(Game game, Point origin, Point destination)
 	{
 		try
 		{
