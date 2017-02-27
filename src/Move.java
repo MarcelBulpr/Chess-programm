@@ -23,6 +23,8 @@ public class Move {
 		{
 			this.origin = origin;
 			this.destination = destination;
+			this.piece = game.board[origin.x][origin.y];
+			this.afterPiece = promotion;
 			//code to be added
 			//the code should take the game, the Points and the promotion and calculate the other values of this Class
 			//.x=buttonID/8
@@ -47,6 +49,8 @@ public class Move {
 		{
 			this.origin = origin;
 			this.destination = destination;
+			this.piece = game.board[origin.x][origin.y];
+			this.afterPiece = this.piece;
 			//code to be added
 			//the code should take the game, the Points and the promotion and calculate the other values of this Class
 			//.x=buttonID/8
@@ -228,7 +232,7 @@ public class Move {
 		if (Math.abs(differenceX) == Math.abs(differenceY) && game.board[this.destination.x][this.destination.y]*game.player <= 0)
 		{
 			//check the path to the destination and check if it is free
-			for (int i = 1; i < Math.abs(differenceX); i++)				
+			for (int i = 1; i < Math.abs(differenceX); i++)
 				if (game.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)] != 0)
 					return false;
 			return true;
