@@ -98,6 +98,38 @@ public class Move {
 	int afterPiece;
 	
 	/**
+	 * check if a move would be legal
+	 * 
+	 * @param game the game in witch the  move should be executed
+	 * @return boolean if the move is legal
+	 */
+	public boolean isLegal(Game game)
+	{
+		try
+		{
+			if (this.isPossible(game))
+			{
+				//execute the move to check if it would be check afterwards
+				//the field the piece came from must be empty after the move
+				game.board[this.origin.x][this.origin.y]=0;
+				//that the piece to the destination
+				game.board[this.destination.x][this.destination.y] = this.afterPiece;
+				if (game.isCheck() == false)
+					return true;
+				else
+					return false;
+			}
+			else
+				return false;
+		}
+		catch (Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
+	
+	/**
 	 * Check if a move is possible
 	 * 
 	 * @param game the game the move is made in
