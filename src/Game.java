@@ -121,4 +121,71 @@ public class Game {
 			return false;
 		}
 	}
+
+	/**
+	 * make a move if it is legal
+	 * 
+	 * @param move the move that needs to be executed
+	 * @return returns true if the move could be made; false if it failed
+	 */
+	public boolean makeMove(Move move)
+	{
+		try
+		{
+			if (move.isLegal(this))
+			{
+				//the field the piece came from must be empty after the move
+				this.board[move.origin.x][move.origin.y]=0;
+				//that the piece to the destination
+				this.board[move.destination.x][move.destination.y] = move.afterPiece;
+				//add the move to the move history
+				this.moves.add(move);
+				//change the player to move
+				this.player *= -1;
+				
+				return true;
+			}
+			else
+				return false;
+		}
+		catch (Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
+	
+	/**
+	 * make a move
+	 * 
+	 * @param move the move that needs to be executed 
+	 * @param check check if the move is legal first
+	 * @return returns true if the move could be made; false if it failed
+	 */
+	public boolean makeMove(Move move, boolean check)
+	{
+		try
+		{			
+			if (check)
+				return this.makeMove(move);
+			else
+			{
+				//the field the piece came from must be empty after the move
+				this.board[move.origin.x][move.origin.y]=0;
+				//that the piece to the destination
+				this.board[move.destination.x][move.destination.y] = move.afterPiece;
+				//add the move to the move history
+				this.moves.add(move);
+				//change the player to move
+				this.player *= -1;
+				
+				return true;
+			}
+		}
+		catch (Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
 }
