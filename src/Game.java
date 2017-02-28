@@ -14,8 +14,8 @@ public class Game {
 	{
 		try
 		{
-			//one board has a static size of 8x8
-			this.board = new int[8][8];
+			//add the start position
+			this.position = new Position();
 			this.moves = new ArrayList<Move>();
 			//white always starts a game
 			this.player = 1;
@@ -27,17 +27,9 @@ public class Game {
 	}
 
 	/**
-	 * the current position on the board
-	 * 1=pawn
-	 * 2=knight
-	 * 3=Bishop
-	 * 4=rook
-	 * 5=Queen
-	 * 6=King
-	 * 7=en passant
-	 * positive values = white, negative values = black
+	 * the current position
 	 */
-	int[][] board;
+	Position position;
 	
 	/**
 	 * a List with all moves that the players have made
@@ -72,9 +64,9 @@ public class Game {
 		ArrayList<Point> positions = new ArrayList<Point>();
 		
 		//for each field add position if the piece matches the searched piece
-		for (int i = 0; i < this.board.length; i++)
-			for (int j = 0; j < this.board[i].length;j++)
-				if (this.board[i][j] == piece)
+		for (int i = 0; i < this.position.board.length; i++)
+			for (int j = 0; j < this.position.board[i].length;j++)
+				if (this.position.board[i][j] == piece)
 					positions.add(new Point(i, j));
 		
 		return positions;
@@ -99,10 +91,10 @@ public class Game {
 			//change the player
 			this.player *= -1;
 			
-			for (int i = 0; i < this.board.length; i++)
-				for (int j = 0; j < this.board[i].length; j++)
+			for (int i = 0; i < this.position.board.length; i++)
+				for (int j = 0; j < this.position.board[i].length; j++)
 					//if a piece of the player that is not to move is on the field
-					if (this.player * this.board[i][j] < 0)
+					if (this.player * this.position.board[i][j] < 0)
 						//check if the piece can move to the King
 						if(new Move(this, new Point(i,j), kingposition).isPossible(this))
 						{
@@ -135,9 +127,9 @@ public class Game {
 			if (move.isLegal(this))
 			{
 				//the field the piece came from must be empty after the move
-				this.board[move.origin.x][move.origin.y]=0;
+				this.position.board[move.origin.x][move.origin.y]=0;
 				//that the piece to the destination
-				this.board[move.destination.x][move.destination.y] = move.afterPiece;
+				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
 				//add the move to the move history
 				this.moves.add(move);
 				//change the player to move
@@ -171,9 +163,9 @@ public class Game {
 			else
 			{
 				//the field the piece came from must be empty after the move
-				this.board[move.origin.x][move.origin.y]=0;
+				this.position.board[move.origin.x][move.origin.y]=0;
 				//that the piece to the destination
-				this.board[move.destination.x][move.destination.y] = move.afterPiece;
+				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
 				//add the move to the move history
 				this.moves.add(move);
 				//change the player to move

@@ -23,7 +23,7 @@ public class Move {
 		{
 			this.origin = origin;
 			this.destination = destination;
-			this.piece = game.board[origin.x][origin.y];
+			this.piece = game.position.board[origin.x][origin.y];
 			this.afterPiece = promotion;
 			//code to be added
 			//the code should take the game, the Points and the promotion and calculate the other values of this Class
@@ -49,7 +49,7 @@ public class Move {
 		{
 			this.origin = origin;
 			this.destination = destination;
-			this.piece = game.board[origin.x][origin.y];
+			this.piece = game.position.board[origin.x][origin.y];
 			this.afterPiece = this.piece;
 			//code to be added
 			//the code should take the game, the Points and the promotion and calculate the other values of this Class
@@ -111,9 +111,9 @@ public class Move {
 			{
 				//execute the move to check if it would be check afterwards
 				//the field the piece came from must be empty after the move
-				game.board[this.origin.x][this.origin.y]=0;
+				game.position.board[this.origin.x][this.origin.y]=0;
 				//that the piece to the destination
-				game.board[this.destination.x][this.destination.y] = this.afterPiece;
+				game.position.board[this.destination.x][this.destination.y] = this.afterPiece;
 				if (game.isCheck() == false)
 					return true;
 				else
@@ -140,7 +140,7 @@ public class Move {
 		try
 		{
 			//get the piece that is moved
-			int piece = game.board[this.origin.x][this.origin.y];
+			int piece = game.position.board[this.origin.x][this.origin.y];
 
 			switch (Math.abs(piece))
 			{
@@ -177,7 +177,7 @@ public class Move {
 				//if the pawn moves straight
 				if (this.origin.x == this.destination.x)
 					//if the destination has no piece on it (7 = en passant tag)
-					if (game.board[this.destination.x][this.destination.y] == 0 || Math.abs(game.board[this.destination.x][this.destination.y]) == 7)
+					if (game.position.board[this.destination.x][this.destination.y] == 0 || Math.abs(game.position.board[this.destination.x][this.destination.y]) == 7)
 						return true;
 					else
 						return false;
@@ -185,7 +185,7 @@ public class Move {
 				//if the pawn moves diagonally (taking)
 				if (Math.abs(this.origin.x - this.destination.x) == 1)
 					//if the destination has an enemy piece on it
-					if (game.board[this.destination.x][this.destination.y] * game.player < 0)
+					if (game.position.board[this.destination.x][this.destination.y] * game.player < 0)
 						return true;
 					else
 						return false;
@@ -198,7 +198,7 @@ public class Move {
 				//if the pawn moves straight
 				if (this.origin.x == this.destination.x)
 					//if the destination has no piece on it
-					if (game.board[this.destination.x][this.destination.y] == 0)
+					if (game.position.board[this.destination.x][this.destination.y] == 0)
 						return true;
 					else
 						return false;
@@ -261,11 +261,11 @@ public class Move {
 		int differenceY = this.origin.y - this.destination.y;
 		
 		//the difference in both axis must be the same and if the destination is empty or an enemy piece
-		if (Math.abs(differenceX) == Math.abs(differenceY) && game.board[this.destination.x][this.destination.y]*game.player <= 0)
+		if (Math.abs(differenceX) == Math.abs(differenceY) && game.position.board[this.destination.x][this.destination.y]*game.player <= 0)
 		{
 			//check the path to the destination and check if it is free
 			for (int i = 1; i < Math.abs(differenceX); i++)
-				if (game.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)] != 0)
+				if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)] != 0)
 					return false;
 			return true;
 		}
@@ -287,21 +287,21 @@ public class Move {
 			int differenceY = this.origin.y - this.destination.y;
 			
 			//a rook can only move on one axis at a time and if the destination is empty or an enemy piece
-			if ((differenceX == 0 || differenceY == 0) && game.board[this.destination.x][this.destination.y]*game.player <= 0)
+			if ((differenceX == 0 || differenceY == 0) && game.position.board[this.destination.x][this.destination.y]*game.player <= 0)
 			{
 					//check in witch direction the rook is moving
 					if (differenceX != 0)
 					{
 						//check if the path is free
 						for (int i = 1; i < differenceX; i++)
-							if (game.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0)
+							if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0)
 								return false;
 					}
 					else if (differenceY != 0)
 					{
 						//check if the path is free
 						for (int i = 1; i < differenceY; i++)
-							if (game.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)] != 0)
+							if (game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)] != 0)
 								return false;
 					}
 					else
@@ -353,7 +353,7 @@ public class Move {
 		int differenceY = Math.abs(this.origin.y - this.destination.y);
 		
 		//a King can move a maximum of one square in each direction
-		if (differenceX <= 1 && differenceY <= 1 && game.board[this.destination.x][this.destination.y] * game.player <= 0)
+		if (differenceX <= 1 && differenceY <= 1 && game.position.board[this.destination.x][this.destination.y] * game.player <= 0)
 			return true;
 		return false;
 	}
