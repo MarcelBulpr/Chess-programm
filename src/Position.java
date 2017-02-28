@@ -75,4 +75,89 @@ public class Position {
 	 * bl 0001
 	 */
 	int castle;
+	
+	/**
+	 * check if a specific player can castle
+	 * 
+	 * @param castleType w/b=color; s/l=short long (ws bs wl bl)
+	 * @return if the castle is allowed
+	 */
+	public boolean canCastle(String castleType)
+	{
+		try
+		{
+			//if white can castle short
+			if (castleType.toLowerCase() == "ws" || castleType.toLowerCase() == "whiteshort")
+				if (this.castle >= 1000)
+					return true;
+			
+			//if black can castle short
+			if (castleType.toLowerCase() == "bs" || castleType.toLowerCase() == "blackshort")
+				if (this.castle%1000 >= 100)
+					return true;
+			
+			//if white can castle long
+			if (castleType.toLowerCase() == "wl" || castleType.toLowerCase() == "whitelong")
+				if (this.castle%100 >= 10)
+					return true;
+			
+			//if black can castle long
+			if (castleType.toLowerCase() == "bl" || castleType.toLowerCase() == "blacklong")
+				if (this.castle%10 >= 1)
+					return true;
+			
+			return false;
+		}
+		catch (Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
+	
+	/**
+	 * check if a specific player can castle
+	 * 
+	 * @param player the player that wants to castle
+	 * @param direction the direction the player want to castle to (l/s)
+	 * @return if the castle is allowed
+	 */
+	public boolean canCastle(int player, String direction)
+	{
+		try
+		{
+			if (player == 1)
+			{
+				//if white can castle short
+				if (direction.toLowerCase() == "s" || direction.toLowerCase() == "short")
+					if (this.castle >= 1000)
+						return true;
+				
+				//if white can castle long
+				if (direction.toLowerCase() == "l" || direction.toLowerCase() == "long")
+					if (this.castle%100 >= 10)
+						return true;
+				
+			}
+			else
+			{
+				//if black can castle short
+				if (direction.toLowerCase() == "s" || direction.toLowerCase() == "short")
+					if (this.castle%1000 >= 100)
+						return true;
+				
+				//if black can castle long
+				if (direction.toLowerCase() == "l" || direction.toLowerCase() == "long")
+					if (this.castle%10 >= 1)
+						return true;
+			}
+			
+			return false;
+		}
+		catch (Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
 }
