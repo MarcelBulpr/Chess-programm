@@ -89,12 +89,12 @@ public class Game {
 			Point kingposition = kingpositions.get(0);
 			
 			//change the player
-			this.player *= -1;
+			int player = this.player * -1;
 			
 			for (int i = 0; i < this.position.board.length; i++)
 				for (int j = 0; j < this.position.board[i].length; j++)
 					//if a piece of the player that is not to move is on the field
-					if (this.player * this.position.board[i][j] < 0)
+					if (player * this.position.board[i][j] < 0)
 						//check if the piece can move to the King
 						if(new Move(this, new Point(i,j), kingposition).isPossible(this))
 						{
@@ -104,7 +104,6 @@ public class Game {
 						}
 			
 			//change the player back
-			this.player *= 1;
 			return false;
 		}
 		catch(Error r)
@@ -125,17 +124,8 @@ public class Game {
 		try
 		{
 			if (move.isLegal(this))
-			{
-				//the field the piece came from must be empty after the move
-				this.position.board[move.origin.x][move.origin.y]=0;
-				//that the piece to the destination
-				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
-				//add the move to the move history
-				this.moves.add(move);
-				//change the player to move
-				this.player *= -1;
-				
-				return true;
+			{				
+				return executeMove(move);
 			}
 			else
 				return false;
@@ -159,7 +149,73 @@ public class Game {
 		try
 		{			
 			if (check)
-				return this.makeMove(move);
+				return this.executeMove(move);
+			else
+			{				
+				return executeMove(move);
+			}
+		}
+		catch (Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
+
+	/**
+	 * execute a move
+	 * 
+	 * @param move the move that needs to be executed
+	 * @return success of failure
+	 */
+	private boolean executeMove (Move move)
+	{
+		try
+		{
+			//if the pawn takes en passant
+			if (this.position.board[move.destination.x][move.destination.y]==-7*this.player)
+			{
+				//the field the piece came from must be empty after the move
+				this.position.board[move.origin.x][move.origin.y]=0;
+				//that the piece to the destination
+				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
+				//take pawn
+				this.position.board[move.destination.x+this.player][move.destination.y] = 0;
+				//add the move to the move history
+				this.moves.add(move);
+				//change the player to move
+				this.player *= -1;
+			}
+			//if a King castles
+			else if (Math.abs(move.piece) == 6 && Math.abs(move.origin.x - move.destination.x)==2)
+			{
+				//the field the piece came from must be empty after the move
+				this.position.board[move.origin.x][move.origin.y]=0;
+				//that the piece to the destination
+				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
+	
+				//check if the king castled long
+				if (move.destination.x == 2)
+				{
+					//remove rook
+					this.position.board[0][move.destination.y] = 0;
+					//place rook next to King
+					this.position.board[3][move.destination.y] = 4*this.player;
+				}
+				//check if the king castled short
+				else if (move.destination.x == 6)
+				{
+					//remove rook
+					this.position.board[7][move.destination.y] = 0;
+					//place rook next to King
+					this.position.board[5][move.destination.y] = 4*this.player;
+				}
+				
+				//add the move to the move history
+				this.moves.add(move);
+				//change the player to move
+				this.player *= -1;
+			}					
 			else
 			{
 				//the field the piece came from must be empty after the move
@@ -170,11 +226,16 @@ public class Game {
 				this.moves.add(move);
 				//change the player to move
 				this.player *= -1;
-				
-				return true;
 			}
+			//clear the board from en passant fields
+			for (int i = 0; i < this.position.board.length; i++)
+				for (int j = 0; j < this.position.board[i].length; j++)
+					if (Math.abs(this.position.board[i][j]) == 7)
+						this.position.board[i][j] = 0;
+			
+			return true;
 		}
-		catch (Error r)
+		catch(Error r)
 		{
 			System.out.print(r.getMessage());
 			return false;

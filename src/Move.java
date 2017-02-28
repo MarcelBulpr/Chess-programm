@@ -109,12 +109,27 @@ public class Move {
 		{
 			if (this.isPossible(game))
 			{
+				boolean success = true;
+								
+				//check if a King castled
+				if (Math.abs(this.piece)==6 && Math.abs(this.origin.x - this.destination.x) == 2)
+				{
+					success = false;
+					if (this.destination.x == 2)
+						if (new Move(game,new Point(this.origin), new Point(3, this.destination.y)).isLegal(game))
+							success=true;
+					if (this.destination.x == 6)
+						if (new Move(game,new Point(this.origin), new Point(5, this.destination.y)).isLegal(game))
+							success=true;
+				}
+				
 				//execute the move to check if it would be check afterwards
 				//the field the piece came from must be empty after the move
 				game.position.board[this.origin.x][this.origin.y]=0;
-				//that the piece to the destination
+				//place the piece to the destination
 				game.position.board[this.destination.x][this.destination.y] = this.afterPiece;
-				if (game.isCheck() == false)
+				
+				if (game.isCheck() == false && success)
 					return true;
 				else
 					return false;
@@ -349,12 +364,41 @@ public class Move {
 	 */
 	private boolean kingMove(Game game)
 	{
-		int differenceX = Math.abs(this.origin.x - this.destination.x);
-		int differenceY = Math.abs(this.origin.y - this.destination.y);
-		
-		//a King can move a maximum of one square in each direction
-		if (differenceX <= 1 && differenceY <= 1 && game.position.board[this.destination.x][this.destination.y] * game.player <= 0)
-			return true;
-		return false;
+		try
+		{
+			int differenceX = Math.abs(this.origin.x - this.destination.x);
+			int differenceY = Math.abs(this.origin.y - this.destination.y);
+			
+			//a King can move a maximum of one square in each direction
+			if (differenceX <= 1 && differenceY <= 1 && game.position.board[this.destination.x][this.destination.y] * game.player <= 0)
+				return true;
+			
+			//check if the King tries to castle and if the destination is empty
+			if (differenceX == 2 && differenceY == 0 && game.position.board[this.destination.x][this.destination.y] == 0)
+			{
+					//if the player castles long
+					if (this.destination.x == 2)
+					{
+						//if the path is free
+						if (game.position.board[this.destination.x+1][this.destination.y] == 0)
+							//is castle still allowed
+							if (game.position.canCastle(game.player, "l"))
+								return true;
+					}
+					//if the player wants to castle short
+					else if (this.destination.x == 6)
+						//if the path is free
+						if (game.position.board[this.destination.x-1][this.destination.y] == 0)
+							//is castle still allowed
+							if (game.position.canCastle(game.player, "s"))
+								return true;
+			}
+			return false;
+		}
+		catch (Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
 	}
 }
