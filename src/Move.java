@@ -189,39 +189,44 @@ public class Move {
 	{
 		try
 		{
-			//if the pawn moved one square in the direction of the opponent
-			if (this.origin.y - this.destination.y == game.player)
+			//if the piece is the right color
+			if (game.position.board[this.origin.x][this.origin.y] * game.player > 0)
 			{
-				//if the pawn moves straight
-				if (this.origin.x == this.destination.x)
-					//if the destination has no piece on it (7 = en passant tag)
-					if (game.position.board[this.destination.x][this.destination.y] == 0 || Math.abs(game.position.board[this.destination.x][this.destination.y]) == 7)
-						return true;
+				//if the pawn moved one square in the direction of the opponent
+				if (this.origin.y - this.destination.y == game.player)
+				{
+					//if the pawn moves straight
+					if (this.origin.x == this.destination.x)
+						//if the destination has no piece on it (7 = en passant tag)
+						if (game.position.board[this.destination.x][this.destination.y] == 0 || Math.abs(game.position.board[this.destination.x][this.destination.y]) == 7)
+							return true;
+						else
+							return false;
+					else
+					//if the pawn moves diagonally (taking)
+					if (Math.abs(this.origin.x - this.destination.x) == 1)
+						//if the destination has an enemy piece on it
+						if (game.position.board[this.destination.x][this.destination.y] * game.player < 0)
+							return true;
+						else
+							return false;
 					else
 						return false;
-				else
-				//if the pawn moves diagonally (taking)
-				if (Math.abs(this.origin.x - this.destination.x) == 1)
-					//if the destination has an enemy piece on it
-					if (game.position.board[this.destination.x][this.destination.y] * game.player < 0)
-						return true;
+					
+				}
+				else if (this.origin.y - this.destination.y == game.player * 2)
+				{
+					//if the pawn moves straight
+					if (this.origin.x == this.destination.x)
+						//if the destination has no piece on it
+						if (game.position.board[this.destination.x][this.destination.y] == 0)
+							return true;
+						else
+							return false;
 					else
 						return false;
-				else
-					return false;
-				
-			}
-			else if (this.origin.y - this.destination.y == game.player * 2)
-			{
-				//if the pawn moves straight
-				if (this.origin.x == this.destination.x)
-					//if the destination has no piece on it
-					if (game.position.board[this.destination.x][this.destination.y] == 0)
-						return true;
-					else
-						return false;
-				else
-					return false;
+				}
+				return false;
 			}
 			return false;
 		}
@@ -248,8 +253,8 @@ public class Move {
 			//the difference in the x and y position (must be three)
 			int difference = differenceX + differenceY;
 			
-			//check if the difference is three
-			if (difference == 3)
+			//check if the difference is three and if the right colored piece wants to move
+			if (difference == 3 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
 			{
 				if (differenceX == 2 || differenceY == 2)
 					return true;
@@ -278,8 +283,8 @@ public class Move {
 		int differenceX = this.origin.x - this.destination.x;
 		int differenceY = this.origin.y - this.destination.y;
 		
-		//the difference in both axis must be the same and if the destination is empty or an enemy piece
-		if (Math.abs(differenceX) == Math.abs(differenceY) && game.position.board[this.destination.x][this.destination.y]*game.player <= 0)
+		//the difference in both axis must be the same and if the destination is empty or an enemy piece and the piece has the right color
+		if (Math.abs(differenceX) == Math.abs(differenceY) && game.position.board[this.destination.x][this.destination.y]*game.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
 		{
 			//check the path to the destination and check if it is free
 			for (int i = 1; i < Math.abs(differenceX); i++)
@@ -305,14 +310,14 @@ public class Move {
 			int differenceY = this.origin.y - this.destination.y;
 			
 			//a rook can only move on one axis at a time and if the destination is empty or an enemy piece
-			if ((differenceX == 0 || differenceY == 0) && game.position.board[this.destination.x][this.destination.y]*game.player <= 0)
+			if ((differenceX == 0 || differenceY == 0) && game.position.board[this.destination.x][this.destination.y]*game.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
 			{
 					//check in witch direction the rook is moving
 					if (differenceX != 0)
 					{
 						//check if the path is free
 						for (int i = 1; i < Math.abs(differenceX); i++)
-							if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0 && Math.abs(game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)]) != 7)
+							if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0 && Math.abs(game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceX)/differenceX) * -1)]) != 7)
 								return false;
 					}
 					else if (differenceY != 0)
@@ -372,12 +377,12 @@ public class Move {
 			int differenceX = Math.abs(this.origin.x - this.destination.x);
 			int differenceY = Math.abs(this.origin.y - this.destination.y);
 			
-			//a King can move a maximum of one square in each direction
-			if (differenceX <= 1 && differenceY <= 1 && game.position.board[this.destination.x][this.destination.y] * game.player <= 0)
+			//a King can move a maximum of one square in each direction and the piece that wants to move is from the player that is to move
+			if (differenceX <= 1 && differenceY <= 1 && game.position.board[this.destination.x][this.destination.y] * game.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
 				return true;
 			
 			//check if the King tries to castle and if the destination is empty
-			if (differenceX == 2 && differenceY == 0 && game.position.board[this.destination.x][this.destination.y] == 0)
+			if (differenceX == 2 && differenceY == 0 && game.position.board[this.destination.x][this.destination.y] == 0 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
 			{
 					//if the player castles long
 					if (this.destination.x == 2)
