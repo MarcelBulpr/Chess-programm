@@ -123,14 +123,17 @@ public class Move {
 							success=true;
 				}
 				
-				//execute the move to check if it would be check afterwards
-				//the field the piece came from must be empty after the move
-				game.position.board[this.origin.x][this.origin.y]=0;
-				//place the piece to the destination
-				game.position.board[this.destination.x][this.destination.y] = this.afterPiece;
 				
-				if (game.isCheck() == false && success)
+				//execute the move to check if it would be check afterwards
+				Game testGame = new Game();
+				testGame.copy(game);
+				
+				testGame.makeMove(this, false);
+				
+				if (testGame.isCheck() == false && success)
+				{
 					return true;
+				}
 				else
 					return false;
 			}
@@ -280,7 +283,7 @@ public class Move {
 		{
 			//check the path to the destination and check if it is free
 			for (int i = 1; i < Math.abs(differenceX); i++)
-				if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)] != 0)
+				if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)] != 0 && Math.abs(game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)]) != 7)
 					return false;
 			return true;
 		}
@@ -308,15 +311,15 @@ public class Move {
 					if (differenceX != 0)
 					{
 						//check if the path is free
-						for (int i = 1; i < differenceX; i++)
-							if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0)
+						for (int i = 1; i < Math.abs(differenceX); i++)
+							if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0 && Math.abs(game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)]) != 7)
 								return false;
 					}
 					else if (differenceY != 0)
 					{
 						//check if the path is free
-						for (int i = 1; i < differenceY; i++)
-							if (game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)] != 0)
+						for (int i = 1; i < Math.abs(differenceY); i++)
+							if (game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)] != 0 && Math.abs(game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)]) != 7)
 								return false;
 					}
 					else
