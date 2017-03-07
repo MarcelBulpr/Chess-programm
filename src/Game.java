@@ -89,21 +89,21 @@ public class Game {
 			Point kingposition = kingpositions.get(0);
 			
 			//change the player
-			int player = this.player * -1;
+			this.player *= -1;
 			
 			for (int i = 0; i < this.position.board.length; i++)
 				for (int j = 0; j < this.position.board[i].length; j++)
 					//if a piece of the player that is not to move is on the field
-					if (player * this.position.board[i][j] < 0)
+					if (this.player * this.position.board[i][j] > 0)
 						//check if the piece can move to the King
 						if(new Move(this, new Point(i,j), kingposition).isPossible(this))
 						{
-							//change the player back
-							this.player *= 1;
+							this.player*=-1;
 							return true;
 						}
 			
-			//change the player back
+			this.player*=-1;
+			
 			return false;
 		}
 		catch(Error r)
@@ -162,6 +162,71 @@ public class Game {
 		}
 	}
 
+	/**
+	 * checks if the current player can move
+	 * 
+	 * @return if the player can move
+	 */
+	public boolean canMove()
+	{
+		try
+		{
+			//for each field
+			for (int i = 0; i < this.position.board.length; i++)
+			{
+				for (int j = 0; j < this.position.board[i].length; j++)
+				{
+					//check if a piece is located on the square
+					if (this.position.board[i][j] * this.player > 0 && Math.abs(this.position.board[i][j]) != 7)
+					{
+						//check if the piece can move to any square on the board
+						for (int k = 0; k < this.position.board.length; k++)
+						{
+							for (int l = 0; l < this.position.board[k].length; l++)
+							{
+								Move move = new Move(this, new Point(i,j), new Point(k,l));
+								if (move.isLegal(this))
+								{
+									return true;
+								}
+							}
+						}
+					}
+				}
+			}
+			return false;
+		}
+		catch(Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
+	
+	/**
+	 * Copy the game class to another ram address (it only has the player and the position in it)
+	 * 
+	 * @param game the game in another ram address
+	 */
+	public void copy(Game game)
+	{
+		try
+		{
+			//copy each square value
+			for (int i = 0; i < game.position.board.length; i++)
+				for (int j = 0; j < game.position.board[i].length; j++)
+					this.position.board[i][j] = game.position.board[i][j];
+					
+			//copy the player that has to move
+			this.player = game.player;
+			this.position.castle = game.position.castle;
+		}
+		catch(Error r)
+		{
+			System.out.print(r.getMessage());
+		}
+	}
+	
 	/**
 	 * execute a move
 	 * 
