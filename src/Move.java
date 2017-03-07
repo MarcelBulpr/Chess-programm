@@ -123,12 +123,12 @@ public class Move {
 							success=true;
 				}
 				
-				
-				//execute the move to check if it would be check afterwards
 				Game testGame = new Game();
 				testGame.copy(game);
 				
 				testGame.makeMove(this, false);
+				//change the player so the isCheck method checks for the right player
+				testGame.player*=-1;
 				
 				if (testGame.isCheck() == false && success)
 				{
