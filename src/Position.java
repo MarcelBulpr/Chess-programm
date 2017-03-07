@@ -77,6 +77,11 @@ public class Position {
 	int castle;
 	
 	/**
+	 * the player that has to move. positive = white to move. negative = black to move.
+	 */
+	int player;
+	
+	/**
 	 * check if a specific player can castle
 	 * 
 	 * @param castleType w/b=color; s/l=short long (ws bs wl bl)

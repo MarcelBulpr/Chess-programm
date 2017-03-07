@@ -128,7 +128,7 @@ public class Move {
 				
 				testGame.makeMove(this, false);
 				//change the player so the isCheck method checks for the right player
-				testGame.player*=-1;
+				testGame.position.player*=-1;
 				
 				if (testGame.isCheck() == false && success)
 				{
@@ -190,10 +190,10 @@ public class Move {
 		try
 		{
 			//if the piece is the right color
-			if (game.position.board[this.origin.x][this.origin.y] * game.player > 0)
+			if (game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
 			{
 				//if the pawn moved one square in the direction of the opponent
-				if (this.origin.y - this.destination.y == game.player)
+				if (this.origin.y - this.destination.y == game.position.player)
 				{
 					//if the pawn moves straight
 					if (this.origin.x == this.destination.x)
@@ -206,7 +206,7 @@ public class Move {
 					//if the pawn moves diagonally (taking)
 					if (Math.abs(this.origin.x - this.destination.x) == 1)
 						//if the destination has an enemy piece on it
-						if (game.position.board[this.destination.x][this.destination.y] * game.player < 0)
+						if (game.position.board[this.destination.x][this.destination.y] * game.position.player < 0)
 							return true;
 						else
 							return false;
@@ -214,7 +214,7 @@ public class Move {
 						return false;
 					
 				}
-				else if (this.origin.y - this.destination.y == game.player * 2)
+				else if (this.origin.y - this.destination.y == game.position.player * 2)
 				{
 					//if the pawn moves straight
 					if (this.origin.x == this.destination.x)
@@ -254,7 +254,7 @@ public class Move {
 			int difference = differenceX + differenceY;
 			
 			//check if the difference is three and if the right colored piece wants to move
-			if (difference == 3 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
+			if (difference == 3 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
 			{
 				if (differenceX == 2 || differenceY == 2)
 					return true;
@@ -284,7 +284,7 @@ public class Move {
 		int differenceY = this.origin.y - this.destination.y;
 		
 		//the difference in both axis must be the same and if the destination is empty or an enemy piece and the piece has the right color
-		if (Math.abs(differenceX) == Math.abs(differenceY) && game.position.board[this.destination.x][this.destination.y]*game.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
+		if (Math.abs(differenceX) == Math.abs(differenceY) && game.position.board[this.destination.x][this.destination.y]*game.position.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
 		{
 			//check the path to the destination and check if it is free
 			for (int i = 1; i < Math.abs(differenceX); i++)
@@ -310,7 +310,7 @@ public class Move {
 			int differenceY = this.origin.y - this.destination.y;
 			
 			//a rook can only move on one axis at a time and if the destination is empty or an enemy piece
-			if ((differenceX == 0 || differenceY == 0) && game.position.board[this.destination.x][this.destination.y]*game.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
+			if ((differenceX == 0 || differenceY == 0) && game.position.board[this.destination.x][this.destination.y]*game.position.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
 			{
 					//check in witch direction the rook is moving
 					if (differenceX != 0)
@@ -378,11 +378,11 @@ public class Move {
 			int differenceY = Math.abs(this.origin.y - this.destination.y);
 			
 			//a King can move a maximum of one square in each direction and the piece that wants to move is from the player that is to move
-			if (differenceX <= 1 && differenceY <= 1 && game.position.board[this.destination.x][this.destination.y] * game.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
+			if (differenceX <= 1 && differenceY <= 1 && game.position.board[this.destination.x][this.destination.y] * game.position.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
 				return true;
 			
 			//check if the King tries to castle and if the destination is empty
-			if (differenceX == 2 && differenceY == 0 && game.position.board[this.destination.x][this.destination.y] == 0 && game.position.board[this.origin.x][this.origin.y] * game.player > 0)
+			if (differenceX == 2 && differenceY == 0 && game.position.board[this.destination.x][this.destination.y] == 0 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
 			{
 					//if the player castles long
 					if (this.destination.x == 2)
@@ -390,7 +390,7 @@ public class Move {
 						//if the path is free
 						if (game.position.board[this.destination.x+1][this.destination.y] == 0)
 							//is castle still allowed
-							if (game.position.canCastle(game.player, "l"))
+							if (game.position.canCastle(game.position.player, "l"))
 								return true;
 					}
 					//if the player wants to castle short
@@ -398,7 +398,7 @@ public class Move {
 						//if the path is free
 						if (game.position.board[this.destination.x-1][this.destination.y] == 0)
 							//is castle still allowed
-							if (game.position.canCastle(game.player, "s"))
+							if (game.position.canCastle(game.position.player, "s"))
 								return true;
 			}
 			return false;

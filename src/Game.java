@@ -18,7 +18,7 @@ public class Game {
 			this.position = new Position();
 			this.moves = new ArrayList<Move>();
 			//white always starts a game
-			this.player = 1;
+			this.position.player = 1;
 		}
 		catch (Error r)
 		{
@@ -35,11 +35,6 @@ public class Game {
 	 * a List with all moves that the players have made
 	 */
 	ArrayList<Move> moves;
-	
-	/**
-	 * the player that has to move. positive = white to move. negative = black to move.
-	 */
-	int player;
 	
 	/**
 	 * Method to generate a Notation String
@@ -81,7 +76,7 @@ public class Game {
 	{
 		try
 		{
-			ArrayList<Point> kingpositions = this.getPositions(6*this.player);
+			ArrayList<Point> kingpositions = this.getPositions(6*this.position.player);
 			//check if no king is found
 			if (kingpositions.size() < 1)
 				return false;
@@ -89,20 +84,20 @@ public class Game {
 			Point kingposition = kingpositions.get(0);
 			
 			//change the player
-			this.player *= -1;
+			this.position.player *= -1;
 			
 			for (int i = 0; i < this.position.board.length; i++)
 				for (int j = 0; j < this.position.board[i].length; j++)
 					//if a piece of the player that is not to move is on the field
-					if (this.player * this.position.board[i][j] > 0)
+					if (this.position.player * this.position.board[i][j] > 0)
 						//check if the piece can move to the King
 						if(new Move(this, new Point(i,j), kingposition).isPossible(this))
 						{
-							this.player*=-1;
+							this.position.player*=-1;
 							return true;
 						}
 			
-			this.player*=-1;
+			this.position.player*=-1;
 			
 			return false;
 		}
@@ -177,7 +172,7 @@ public class Game {
 				for (int j = 0; j < this.position.board[i].length; j++)
 				{
 					//check if a piece is located on the square
-					if (this.position.board[i][j] * this.player > 0 && Math.abs(this.position.board[i][j]) != 7)
+					if (this.position.board[i][j] * this.position.player > 0 && Math.abs(this.position.board[i][j]) != 7)
 					{
 						//check if the piece can move to any square on the board
 						for (int k = 0; k < this.position.board.length; k++)
@@ -218,7 +213,7 @@ public class Game {
 					this.position.board[i][j] = game.position.board[i][j];
 					
 			//copy the player that has to move
-			this.player = game.player;
+			this.position.player = game.position.player;
 			this.position.castle = game.position.castle;
 		}
 		catch(Error r)
@@ -226,7 +221,7 @@ public class Game {
 			System.out.print(r.getMessage());
 		}
 	}
-	
+		
 	/**
 	 * execute a move
 	 * 
@@ -238,18 +233,18 @@ public class Game {
 		try
 		{
 			//if the pawn takes en passant
-			if (this.position.board[move.destination.x][move.destination.y]==-7*this.player)
+			if (this.position.board[move.destination.x][move.destination.y]==-7*this.position.player)
 			{
 				//the field the piece came from must be empty after the move
 				this.position.board[move.origin.x][move.origin.y]=0;
 				//that the piece to the destination
 				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
 				//take pawn
-				this.position.board[move.destination.x+this.player][move.destination.y] = 0;
+				this.position.board[move.destination.x+this.position.player][move.destination.y] = 0;
 				//add the move to the move history
 				this.moves.add(move);
 				//change the player to move
-				this.player *= -1;
+				this.position.player *= -1;
 			}
 			//if a King castles
 			else if (Math.abs(move.piece) == 6 && Math.abs(move.origin.x - move.destination.x)==2)
@@ -265,7 +260,7 @@ public class Game {
 					//remove rook
 					this.position.board[0][move.destination.y] = 0;
 					//place rook next to King
-					this.position.board[3][move.destination.y] = 4*this.player;
+					this.position.board[3][move.destination.y] = 4*this.position.player;
 				}
 				//check if the king castled short
 				else if (move.destination.x == 6)
@@ -273,13 +268,13 @@ public class Game {
 					//remove rook
 					this.position.board[7][move.destination.y] = 0;
 					//place rook next to King
-					this.position.board[5][move.destination.y] = 4*this.player;
+					this.position.board[5][move.destination.y] = 4*this.position.player;
 				}
 				
 				//add the move to the move history
 				this.moves.add(move);
 				//change the player to move
-				this.player *= -1;
+				this.position.player *= -1;
 			}					
 			else
 			{
@@ -290,7 +285,7 @@ public class Game {
 				//add the move to the move history
 				this.moves.add(move);
 				//change the player to move
-				this.player *= -1;
+				this.position.player *= -1;
 			}
 			//clear the board from en passant fields
 			for (int i = 0; i < this.position.board.length; i++)
