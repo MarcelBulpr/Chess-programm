@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.awt.Point;
 
-
 /**
  * Class to save all significant data for one game
  * 
@@ -241,13 +240,16 @@ public class Game {
 				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
 				//take pawn
 				this.position.board[move.destination.x+this.position.player][move.destination.y] = 0;
-				//add the move to the move history
-				this.moves.add(move);
-				//change the player to move
-				this.position.player *= -1;
 			}
+			
+			//clear the board from en passant fields
+			for (int i = 0; i < this.position.board.length; i++)
+				for (int j = 0; j < this.position.board[i].length; j++)
+					if (Math.abs(this.position.board[i][j]) == 7)
+						this.position.board[i][j] = 0;
+			
 			//if a King castles
-			else if (Math.abs(move.piece) == 6 && Math.abs(move.origin.x - move.destination.x)==2)
+			if (Math.abs(move.piece) == 6 && Math.abs(move.origin.x - move.destination.x)==2)
 			{
 				//the field the piece came from must be empty after the move
 				this.position.board[move.origin.x][move.origin.y]=0;
@@ -270,28 +272,29 @@ public class Game {
 					//place rook next to King
 					this.position.board[5][move.destination.y] = 4*this.position.player;
 				}
-				
-				//add the move to the move history
-				this.moves.add(move);
-				//change the player to move
-				this.position.player *= -1;
-			}					
+			}		
+			//if a pawn moves 2 squares
+			else if(Math.abs(move.piece) == 1 && Math.abs(move.origin.y - move.destination.y) == 2 && Math.abs(move.origin.x - move.destination.x) == 0)
+			{
+				//remove the pawn
+				this.position.board[move.origin.x][move.origin.y] = 0;
+				//add en passant square
+				this.position.board[move.origin.x][move.destination.y + this.position.player] = 7 * this.position.player;
+				//set pawn to new location
+				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
+			}
 			else
 			{
 				//the field the piece came from must be empty after the move
 				this.position.board[move.origin.x][move.origin.y]=0;
 				//that the piece to the destination
 				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
-				//add the move to the move history
-				this.moves.add(move);
-				//change the player to move
-				this.position.player *= -1;
-			}
-			//clear the board from en passant fields
-			for (int i = 0; i < this.position.board.length; i++)
-				for (int j = 0; j < this.position.board[i].length; j++)
-					if (Math.abs(this.position.board[i][j]) == 7)
-						this.position.board[i][j] = 0;
+			}			
+
+			//add the move to the move history
+			this.moves.add(move);
+			//change the player to move
+			this.position.player *= -1;
 			
 			return true;
 		}
