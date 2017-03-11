@@ -16,8 +16,6 @@ public class Game {
 			//add the start position
 			this.position = new Position();
 			this.moves = new ArrayList<Move>();
-			//white always starts a game
-			this.position.player = 1;
 		}
 		catch (Error r)
 		{

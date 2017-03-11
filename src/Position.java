@@ -48,6 +48,7 @@ public class Position {
 			this.board[4][0]=-6;
 			
 			this.castle = 1111;
+			this.player = 1;
 		}
 		catch (Error r)
 		{
