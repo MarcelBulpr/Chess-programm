@@ -67,7 +67,7 @@ public class Game {
 		}
 	}
 
-	public void makeMove(Move move)
+	public boolean makeMove(Move move)
 	{
 		try
 		{
@@ -76,11 +76,15 @@ public class Game {
 				this.position.makeMove(move);
 				//add the move to the move history
 				this.moves.add(move);
+				return true;
 			}
+			
+			return false;
 		}
 		catch(Error r)
 		{
 			System.out.print(r.getMessage());
+			return false;
 		}
 	}
 }
