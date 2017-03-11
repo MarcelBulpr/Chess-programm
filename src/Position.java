@@ -188,7 +188,6 @@ public class Position {
 		return positions;
 	}
 
-
 	/**
 	 * checks if the player that has to move is in check
 	 * 
@@ -230,7 +229,6 @@ public class Position {
 		}
 	}
 	
-
 	/**
 	 * make a move if it is legal
 	 * 
@@ -321,6 +319,11 @@ public class Position {
 		}
 	}
 	
+	/**
+	 * copy a position in a different ram address
+	 * 
+	 * @param position
+	 */
 	public void copy(Position position)
 	{
 		//copy each square value
