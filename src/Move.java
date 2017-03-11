@@ -61,6 +61,33 @@ public class Move {
 			System.out.println(r.getMessage());
 		}
 	}
+	
+	/**
+	 * Builder to create a move out of a position an origin and an destination
+	 * 
+	 * @param position the position where the move is made
+	 * @param origin the position the piece came from
+	 * @param destination the position the piece went to
+	 * @param promotion the piece a pawn promoted to
+	 */
+	public Move(Position position, Point origin, Point destination, int promotion)
+	{
+		try
+		{
+			this.origin = origin;
+			this.destination = destination;
+			this.piece = position.board[origin.x][origin.y];
+			this.afterPiece = promotion;
+			//code to be added
+			//the code should take the game, the Points and the promotion and calculate the other values of this Class
+			//.x=buttonID/8
+			//.y=buttonID%8
+		}
+		catch (Error r)
+		{
+			System.out.println(r.getMessage());
+		}
+	}
 
 	/**
 	 * the coordinates of the origin of the piece
