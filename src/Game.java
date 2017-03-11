@@ -48,157 +48,7 @@ public class Game {
 	}
 	
 	/**
-	 * Get a List of all position the piece is placed
-	 * 
-	 * @param piece the piece to search for
-	 * @return the List of all positions the piece was found
-	 */
-	public ArrayList<Point> getPositions(int piece)
-	{
-		ArrayList<Point> positions = new ArrayList<Point>();
-		
-		//for each field add position if the piece matches the searched piece
-		for (int i = 0; i < this.position.board.length; i++)
-			for (int j = 0; j < this.position.board[i].length;j++)
-				if (this.position.board[i][j] == piece)
-					positions.add(new Point(i, j));
-		
-		return positions;
-	}
-
-	/**
-	 * checks if the player that has to move is in check
-	 * 
-	 * @return whether or not the position is check
-	 */
-	public boolean isCheck()
-	{
-		try
-		{
-			ArrayList<Point> kingpositions = this.getPositions(6*this.position.player);
-			//check if no king is found
-			if (kingpositions.size() < 1)
-				return false;
-			
-			Point kingposition = kingpositions.get(0);
-			
-			//change the player
-			this.position.player *= -1;
-			
-			for (int i = 0; i < this.position.board.length; i++)
-				for (int j = 0; j < this.position.board[i].length; j++)
-					//if a piece of the player that is not to move is on the field
-					if (this.position.player * this.position.board[i][j] > 0)
-						//check if the piece can move to the King
-						if(new Move(this, new Point(i,j), kingposition).isPossible(this))
-						{
-							this.position.player*=-1;
-							return true;
-						}
-			
-			this.position.player*=-1;
-			
-			return false;
-		}
-		catch(Error r)
-		{
-			System.out.print(r.getMessage());
-			return false;
-		}
-	}
-
-	/**
-	 * make a move if it is legal
-	 * 
-	 * @param move the move that needs to be executed
-	 * @return returns true if the move could be made; false if it failed
-	 */
-	public boolean makeMove(Move move)
-	{
-		try
-		{
-			if (move.isLegal(this))
-			{				
-				return executeMove(move);
-			}
-			else
-				return false;
-		}
-		catch (Error r)
-		{
-			System.out.print(r.getMessage());
-			return false;
-		}
-	}
-	
-	/**
-	 * make a move
-	 * 
-	 * @param move the move that needs to be executed 
-	 * @param check check if the move is legal first
-	 * @return returns true if the move could be made; false if it failed
-	 */
-	public boolean makeMove(Move move, boolean check)
-	{
-		try
-		{			
-			if (check)
-				return this.executeMove(move);
-			else
-			{				
-				return executeMove(move);
-			}
-		}
-		catch (Error r)
-		{
-			System.out.print(r.getMessage());
-			return false;
-		}
-	}
-
-	/**
-	 * checks if the current player can move
-	 * 
-	 * @return if the player can move
-	 */
-	public boolean canMove()
-	{
-		try
-		{
-			//for each field
-			for (int i = 0; i < this.position.board.length; i++)
-			{
-				for (int j = 0; j < this.position.board[i].length; j++)
-				{
-					//check if a piece is located on the square
-					if (this.position.board[i][j] * this.position.player > 0 && Math.abs(this.position.board[i][j]) != 7)
-					{
-						//check if the piece can move to any square on the board
-						for (int k = 0; k < this.position.board.length; k++)
-						{
-							for (int l = 0; l < this.position.board[k].length; l++)
-							{
-								Move move = new Move(this, new Point(i,j), new Point(k,l));
-								if (move.isLegal(this))
-								{
-									return true;
-								}
-							}
-						}
-					}
-				}
-			}
-			return false;
-		}
-		catch(Error r)
-		{
-			System.out.print(r.getMessage());
-			return false;
-		}
-	}
-	
-	/**
-	 * Copy the game class to another ram address (it only has the player and the position in it)
+	 * Copy the game class to another ram address
 	 * 
 	 * @param game the game in another ram address
 	 */
@@ -206,102 +56,33 @@ public class Game {
 	{
 		try
 		{
-			//copy each square value
-			for (int i = 0; i < game.position.board.length; i++)
-				for (int j = 0; j < game.position.board[i].length; j++)
-					this.position.board[i][j] = game.position.board[i][j];
-					
-			//copy the player that has to move
-			this.position.player = game.position.player;
-			this.position.castle = game.position.castle;
+			//copy the position
+			this.position.copy(game.position);
+			
+			//add each move to the moves Array
+			for (int i = 0; i < game.moves.size(); i++)
+				this.moves.add(game.moves.get(i));
 		}
 		catch(Error r)
 		{
 			System.out.print(r.getMessage());
 		}
 	}
-		
-	/**
-	 * execute a move
-	 * 
-	 * @param move the move that needs to be executed
-	 * @return success of failure
-	 */
-	private boolean executeMove (Move move)
+
+	public void makeMove(Move move)
 	{
 		try
 		{
-			//if the pawn takes en passant
-			if (this.position.board[move.destination.x][move.destination.y]==-7*this.position.player)
+			if (move.isLegal(this.position))
 			{
-				//the field the piece came from must be empty after the move
-				this.position.board[move.origin.x][move.origin.y]=0;
-				//that the piece to the destination
-				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
-				//take pawn
-				this.position.board[move.destination.x+this.position.player][move.destination.y] = 0;
+				this.position.makeMove(move);
+				//add the move to the move history
+				this.moves.add(move);
 			}
-			
-			//clear the board from en passant fields
-			for (int i = 0; i < this.position.board.length; i++)
-				for (int j = 0; j < this.position.board[i].length; j++)
-					if (Math.abs(this.position.board[i][j]) == 7)
-						this.position.board[i][j] = 0;
-			
-			//if a King castles
-			if (Math.abs(move.piece) == 6 && Math.abs(move.origin.x - move.destination.x)==2)
-			{
-				//the field the piece came from must be empty after the move
-				this.position.board[move.origin.x][move.origin.y]=0;
-				//that the piece to the destination
-				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
-	
-				//check if the king castled long
-				if (move.destination.x == 2)
-				{
-					//remove rook
-					this.position.board[0][move.destination.y] = 0;
-					//place rook next to King
-					this.position.board[3][move.destination.y] = 4*this.position.player;
-				}
-				//check if the king castled short
-				else if (move.destination.x == 6)
-				{
-					//remove rook
-					this.position.board[7][move.destination.y] = 0;
-					//place rook next to King
-					this.position.board[5][move.destination.y] = 4*this.position.player;
-				}
-			}		
-			//if a pawn moves 2 squares
-			else if(Math.abs(move.piece) == 1 && Math.abs(move.origin.y - move.destination.y) == 2 && Math.abs(move.origin.x - move.destination.x) == 0)
-			{
-				//remove the pawn
-				this.position.board[move.origin.x][move.origin.y] = 0;
-				//add en passant square
-				this.position.board[move.origin.x][move.destination.y + this.position.player] = 7 * this.position.player;
-				//set pawn to new location
-				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
-			}
-			else
-			{
-				//the field the piece came from must be empty after the move
-				this.position.board[move.origin.x][move.origin.y]=0;
-				//that the piece to the destination
-				this.position.board[move.destination.x][move.destination.y] = move.afterPiece;
-			}			
-
-			//add the move to the move history
-			this.moves.add(move);
-			//change the player to move
-			this.position.player *= -1;
-			
-			return true;
 		}
 		catch(Error r)
 		{
 			System.out.print(r.getMessage());
-			return false;
 		}
 	}
 }

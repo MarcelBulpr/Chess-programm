@@ -88,6 +88,32 @@ public class Move {
 			System.out.println(r.getMessage());
 		}
 	}
+	
+	/**
+	 * Builder to create a move out of a game an origin and an destination
+	 * 
+	 * @param game the game where the move is made
+	 * @param origin the position the piece came from
+	 * @param destination the position the piece went to
+	 */
+	public Move(Position position, Point origin, Point destination)
+	{
+		try
+		{
+			this.origin = origin;
+			this.destination = destination;
+			this.piece = position.board[origin.x][origin.y];
+			this.afterPiece = this.piece;
+			//code to be added
+			//the code should take the game, the Points and the promotion and calculate the other values of this Class
+			//.x=buttonID/8
+			//.y=buttonID%8
+		}
+		catch (Error r)
+		{
+			System.out.println(r.getMessage());
+		}
+	}
 
 	/**
 	 * the coordinates of the origin of the piece
@@ -130,11 +156,11 @@ public class Move {
 	 * @param game the game in witch the  move should be executed
 	 * @return boolean if the move is legal
 	 */
-	public boolean isLegal(Game game)
+	public boolean isLegal(Position position)
 	{
 		try
 		{
-			if (this.isPossible(game))
+			if (this.isPossible(position))
 			{
 				boolean success = true;
 								
@@ -143,21 +169,22 @@ public class Move {
 				{
 					success = false;
 					if (this.destination.x == 2)
-						if (new Move(game,new Point(this.origin), new Point(3, this.destination.y)).isLegal(game))
+						if (new Move(position,new Point(this.origin), new Point(3, this.destination.y)).isLegal(position))
 							success=true;
 					if (this.destination.x == 6)
-						if (new Move(game,new Point(this.origin), new Point(5, this.destination.y)).isLegal(game))
+						if (new Move(position,new Point(this.origin), new Point(5, this.destination.y)).isLegal(position))
 							success=true;
 				}
 				
-				Game testGame = new Game();
-				testGame.copy(game);
+				//test if it is check after the move was executed
+				Position testPosition = new Position();
+				testPosition.copy(position);
 				
-				testGame.makeMove(this, false);
+				testPosition.makeMove(this, false);
 				//change the player so the isCheck method checks for the right player
-				testGame.position.player*=-1;
+				testPosition.player*=-1;
 				
-				if (testGame.isCheck() == false && success)
+				if (testPosition.isCheck() == false && success)
 				{
 					return true;
 				}
@@ -180,22 +207,22 @@ public class Move {
 	 * @param game the game the move is made in
 	 * @return boolean that indicates if the move is possible
 	 */
-	public boolean isPossible(Game game)
+	public boolean isPossible(Position position)
 	{
 		try
 		{
 			//get the piece that is moved
-			int piece = game.position.board[this.origin.x][this.origin.y];
+			int piece = position.board[this.origin.x][this.origin.y];
 
 			switch (Math.abs(piece))
 			{
 				//check witch kind of piece stands on the origin field 
-				case 1: return pawnMove(game);
-				case 2: return knightMove(game);
-				case 3: return bishopMove(game);
-				case 4: return rookMove(game);
-				case 5: return queenMove(game);
-				case 6: return kingMove(game);
+				case 1: return pawnMove(position);
+				case 2: return knightMove(position);
+				case 3: return bishopMove(position);
+				case 4: return rookMove(position);
+				case 5: return queenMove(position);
+				case 6: return kingMove(position);
 				default: return false;
 			}
 		}
@@ -212,20 +239,20 @@ public class Move {
 	 * @param game the game the move is made in
 	 * @return boolean that indicates if the pawn move is possible
 	 */
-	private boolean pawnMove(Game game)
+	private boolean pawnMove(Position position)
 	{
 		try
 		{
 			//if the piece is the right color
-			if (game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
+			if (position.board[this.origin.x][this.origin.y] * position.player > 0)
 			{
 				//if the pawn moved one square in the direction of the opponent
-				if (this.origin.y - this.destination.y == game.position.player)
+				if (this.origin.y - this.destination.y == position.player)
 				{
 					//if the pawn moves straight
 					if (this.origin.x == this.destination.x)
 						//if the destination has no piece on it (7 = en passant tag)
-						if (game.position.board[this.destination.x][this.destination.y] == 0 || Math.abs(game.position.board[this.destination.x][this.destination.y]) == 7)
+						if (position.board[this.destination.x][this.destination.y] == 0 || Math.abs(position.board[this.destination.x][this.destination.y]) == 7)
 							return true;
 						else
 							return false;
@@ -233,7 +260,7 @@ public class Move {
 					//if the pawn moves diagonally (taking)
 					if (Math.abs(this.origin.x - this.destination.x) == 1)
 						//if the destination has an enemy piece on it
-						if (game.position.board[this.destination.x][this.destination.y] * game.position.player < 0)
+						if (position.board[this.destination.x][this.destination.y] * position.player < 0)
 							return true;
 						else
 							return false;
@@ -241,12 +268,12 @@ public class Move {
 						return false;
 					
 				}
-				else if (this.origin.y - this.destination.y == game.position.player * 2)
+				else if (this.origin.y - this.destination.y == position.player * 2)
 				{
 					//if the pawn moves straight
 					if (this.origin.x == this.destination.x)
-						//if the destination has no piece on it
-						if (game.position.board[this.destination.x][this.destination.y] == 0 && new Move(game, new Point(this.origin.x, this.origin.y), new Point(this.destination.x, this.destination.y + game.position.player)).isPossible(game))
+						//if the destination has no piece on it and if the path is clear
+						if (position.board[this.destination.x][this.destination.y] == 0 && new Move(position, new Point(this.origin.x, this.origin.y), new Point(this.destination.x, this.destination.y + position.player)).isPossible(position))
 							return true;
 						else
 							return false;
@@ -270,7 +297,7 @@ public class Move {
 	 * @param game the game the move is made in
 	 * @return boolean that indicates if the knight move is possible
 	 */
-	private boolean knightMove(Game game)
+	private boolean knightMove(Position position)
 	{
 		try
 		{
@@ -281,7 +308,7 @@ public class Move {
 			int difference = differenceX + differenceY;
 			
 			//check if the difference is three and if the right colored piece wants to move
-			if (difference == 3 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
+			if (difference == 3 && position.board[this.origin.x][this.origin.y] * position.player > 0)
 			{
 				if (differenceX == 2 || differenceY == 2)
 					return true;
@@ -305,17 +332,17 @@ public class Move {
 	 * @param game the game the move is made in
 	 * @return boolean that indicates if the bishop move is possible
 	 */
-	private boolean bishopMove(Game game)
+	private boolean bishopMove(Position position)
 	{
 		int differenceX = this.origin.x - this.destination.x;
 		int differenceY = this.origin.y - this.destination.y;
 		
 		//the difference in both axis must be the same and if the destination is empty or an enemy piece and the piece has the right color
-		if (Math.abs(differenceX) == Math.abs(differenceY) && game.position.board[this.destination.x][this.destination.y]*game.position.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
+		if (Math.abs(differenceX) == Math.abs(differenceY) && position.board[this.destination.x][this.destination.y]*position.player <= 0 && position.board[this.origin.x][this.origin.y] * position.player > 0)
 		{
 			//check the path to the destination and check if it is free
 			for (int i = 1; i < Math.abs(differenceX); i++)
-				if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)] != 0 && Math.abs(game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)]) != 7)
+				if (position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)] != 0 && Math.abs(position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y + (i * (Math.abs(differenceY)/differenceY) *-1)]) != 7)
 					return false;
 			return true;
 		}
@@ -329,7 +356,7 @@ public class Move {
 	 * @param game the game the move is made in
 	 * @return boolean that indicates if the rook move is possible
 	 */
-	private boolean rookMove(Game game)
+	private boolean rookMove(Position position)
 	{
 		try
 		{
@@ -337,21 +364,21 @@ public class Move {
 			int differenceY = this.origin.y - this.destination.y;
 			
 			//a rook can only move on one axis at a time and if the destination is empty or an enemy piece
-			if ((differenceX == 0 || differenceY == 0) && game.position.board[this.destination.x][this.destination.y]*game.position.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
+			if ((differenceX == 0 || differenceY == 0) && position.board[this.destination.x][this.destination.y]*position.player <= 0 && position.board[this.origin.x][this.origin.y] * position.player > 0)
 			{
 					//check in witch direction the rook is moving
 					if (differenceX != 0)
 					{
 						//check if the path is free
 						for (int i = 1; i < Math.abs(differenceX); i++)
-							if (game.position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0 && Math.abs(game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceX)/differenceX) * -1)]) != 7)
+							if (position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0 && Math.abs(position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceX)/differenceX) * -1)]) != 7)
 								return false;
 					}
 					else if (differenceY != 0)
 					{
 						//check if the path is free
 						for (int i = 1; i < Math.abs(differenceY); i++)
-							if (game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)] != 0 && Math.abs(game.position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)]) != 7)
+							if (position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)] != 0 && Math.abs(position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceY)/differenceY) * -1)]) != 7)
 								return false;
 					}
 					else
@@ -375,12 +402,12 @@ public class Move {
 	 * @param game the game the move is made in
 	 * @return boolean that indicates if the rook move is possible
 	 */
-	private boolean queenMove(Game game)
+	private boolean queenMove(Position position)
 	{
 		try
 		{
 			//if a rook or a bishop can perform a move a queen can too
-			if (rookMove(game) || bishopMove(game))
+			if (rookMove(position) || bishopMove(position))
 				return true;
 			return false;
 		}
@@ -397,7 +424,7 @@ public class Move {
 	 * @param game the game the move is made in
 	 * @return boolean that indicates if the king move is possible
 	 */
-	private boolean kingMove(Game game)
+	private boolean kingMove(Position position)
 	{
 		try
 		{
@@ -405,27 +432,27 @@ public class Move {
 			int differenceY = Math.abs(this.origin.y - this.destination.y);
 			
 			//a King can move a maximum of one square in each direction and the piece that wants to move is from the player that is to move
-			if (differenceX <= 1 && differenceY <= 1 && game.position.board[this.destination.x][this.destination.y] * game.position.player <= 0 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
+			if (differenceX <= 1 && differenceY <= 1 && position.board[this.destination.x][this.destination.y] * position.player <= 0 && position.board[this.origin.x][this.origin.y] * position.player > 0)
 				return true;
 			
 			//check if the King tries to castle and if the destination is empty
-			if (differenceX == 2 && differenceY == 0 && game.position.board[this.destination.x][this.destination.y] == 0 && game.position.board[this.origin.x][this.origin.y] * game.position.player > 0)
+			if (differenceX == 2 && differenceY == 0 && position.board[this.destination.x][this.destination.y] == 0 && position.board[this.origin.x][this.origin.y] * position.player > 0)
 			{
 					//if the player castles long
 					if (this.destination.x == 2)
 					{
 						//if the path is free
-						if (game.position.board[this.destination.x+1][this.destination.y] == 0)
+						if (position.board[this.destination.x+1][this.destination.y] == 0)
 							//is castle still allowed
-							if (game.position.canCastle(game.position.player, "l"))
+							if (position.canCastle(position.player, "l"))
 								return true;
 					}
 					//if the player wants to castle short
 					else if (this.destination.x == 6)
 						//if the path is free
-						if (game.position.board[this.destination.x-1][this.destination.y] == 0)
+						if (position.board[this.destination.x-1][this.destination.y] == 0)
 							//is castle still allowed
-							if (game.position.canCastle(game.position.player, "s"))
+							if (position.canCastle(position.player, "s"))
 								return true;
 			}
 			return false;
