@@ -3,12 +3,12 @@ import java.util.ArrayList;
 
 /**
  * class to save the position
- * 
- * @author Marcel
+ *
+ * @author Marcel, Kevin.K
  *
  */
 public class Position {
-	
+
 	public Position()
 	{
 		try
@@ -20,42 +20,42 @@ public class Position {
 				this.board[i][6] = 1;
 				this.board[i][1] = -1;
 			}
-			
+
 			//place rooks
 			this.board[0][7]=4;
 			this.board[7][7]=4;
 			this.board[0][0]=-4;
 			this.board[7][0]=-4;
-			
+
 			//place knights
 			this.board[1][7]=2;
 			this.board[6][7]=2;
 			this.board[1][0]=-2;
 			this.board[6][0]=-2;
-			
+
 			//place bishops
 			this.board[2][7]=3;
 			this.board[5][7]=3;
 			this.board[2][0]=-3;
 			this.board[5][0]=-3;
-			
+
 			//place queens
 			this.board[3][7]=5;
 			this.board[3][0]=-5;
-			
+
 			//place Kings
 			this.board[4][7]=6;
 			this.board[4][0]=-6;
-			
+
 			this.castle = 1111;
 			this.player = 1;
 		}
 		catch (Error r)
 		{
 			System.out.print(r.getMessage());
-		}	
+		}
 	}
-	
+
 	/**
 	 * the current position on the board
 	 * 1=pawn
@@ -68,25 +68,25 @@ public class Position {
 	 * positive values = white, negative values = black
 	 */
 	int[][]board;
-	
+
 	/**
 	 * variable that indicates if one player can castle
-	 * 
+	 *
 	 * ws 1000
 	 * bs 0100
 	 * wl 0010
 	 * bl 0001
 	 */
 	int castle;
-	
+
 	/**
 	 * the player that has to move. positive = white to move. negative = black to move.
 	 */
 	int player;
-	
+
 	/**
 	 * check if a specific player can castle
-	 * 
+	 *
 	 * @param castleType w/b=color; s/l=short long (ws bs wl bl)
 	 * @return if the castle is allowed
 	 */
@@ -98,22 +98,22 @@ public class Position {
 			if (castleType.toLowerCase() == "ws" || castleType.toLowerCase() == "whiteshort")
 				if (this.castle >= 1000)
 					return true;
-			
+
 			//if black can castle short
 			if (castleType.toLowerCase() == "bs" || castleType.toLowerCase() == "blackshort")
 				if (this.castle%1000 >= 100)
 					return true;
-			
+
 			//if white can castle long
 			if (castleType.toLowerCase() == "wl" || castleType.toLowerCase() == "whitelong")
 				if (this.castle%100 >= 10)
 					return true;
-			
+
 			//if black can castle long
 			if (castleType.toLowerCase() == "bl" || castleType.toLowerCase() == "blacklong")
 				if (this.castle%10 >= 1)
 					return true;
-			
+
 			return false;
 		}
 		catch (Error r)
@@ -122,10 +122,10 @@ public class Position {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * check if a specific player can castle
-	 * 
+	 *
 	 * @param player the player that wants to castle
 	 * @param direction the direction the player want to castle to (l/s)
 	 * @return if the castle is allowed
@@ -140,12 +140,12 @@ public class Position {
 				if (direction.toLowerCase() == "s" || direction.toLowerCase() == "short")
 					if (this.castle >= 1000)
 						return true;
-				
+
 				//if white can castle long
 				if (direction.toLowerCase() == "l" || direction.toLowerCase() == "long")
 					if (this.castle%100 >= 10)
 						return true;
-				
+
 			}
 			else
 			{
@@ -153,13 +153,13 @@ public class Position {
 				if (direction.toLowerCase() == "s" || direction.toLowerCase() == "short")
 					if (this.castle%1000 >= 100)
 						return true;
-				
+
 				//if black can castle long
 				if (direction.toLowerCase() == "l" || direction.toLowerCase() == "long")
 					if (this.castle%10 >= 1)
 						return true;
 			}
-			
+
 			return false;
 		}
 		catch (Error r)
@@ -171,26 +171,26 @@ public class Position {
 
 	/**
 	 * Get a List of all position the piece is placed
-	 * 
+	 *
 	 * @param piece the piece to search for
 	 * @return the List of all positions the piece was found
 	 */
 	public ArrayList<Point> getPositions(int piece)
 	{
 		ArrayList<Point> positions = new ArrayList<Point>();
-		
+
 		//for each field add position if the piece matches the searched piece
 		for (int i = 0; i < this.board.length; i++)
 			for (int j = 0; j < this.board[i].length;j++)
 				if (this.board[i][j] == piece)
 					positions.add(new Point(i, j));
-		
+
 		return positions;
 	}
 
 	/**
 	 * checks if the player that has to move is in check
-	 * 
+	 *
 	 * @return whether or not the position is check
 	 */
 	public boolean isCheck()
@@ -201,12 +201,12 @@ public class Position {
 			//check if no king is found
 			if (kingpositions.size() < 1)
 				return false;
-			
+
 			Point kingposition = kingpositions.get(0);
-			
+
 			//change the player so that the opponents moves get checked
 			this.player *= -1;
-			
+
 			for (int i = 0; i < this.board.length; i++)
 				for (int j = 0; j < this.board[i].length; j++)
 					//if a piece of the player that is to move is on the field
@@ -217,9 +217,9 @@ public class Position {
 							this.player*=-1;
 							return true;
 						}
-			
+
 			this.player*=-1;
-			
+
 			return false;
 		}
 		catch(Error r)
@@ -228,10 +228,10 @@ public class Position {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * make a move if it is legal
-	 * 
+	 *
 	 * @param move the move that needs to be executed
 	 * @return returns true if the move could be made; false if it failed
 	 */
@@ -240,7 +240,7 @@ public class Position {
 		try
 		{
 			if (move.isLegal(this))
-			{				
+			{
 				return executeMove(move);
 			}
 			else
@@ -252,22 +252,22 @@ public class Position {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * make a move
-	 * 
-	 * @param move the move that needs to be executed 
+	 *
+	 * @param move the move that needs to be executed
 	 * @param check check if the move is legal first
 	 * @return returns true if the move could be made; false if it failed
 	 */
 	public boolean makeMove(Move move, boolean check)
 	{
 		try
-		{			
+		{
 			if (check)
 				return this.executeMove(move);
 			else
-			{				
+			{
 				return executeMove(move);
 			}
 		}
@@ -277,10 +277,10 @@ public class Position {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * checks if the current player can move
-	 * 
+	 *
 	 * @return if the player can move
 	 */
 	public boolean canMove()
@@ -318,10 +318,10 @@ public class Position {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * copy a position in a different ram address
-	 * 
+	 *
 	 * @param position
 	 */
 	public void copy(Position position)
@@ -330,16 +330,16 @@ public class Position {
 		for (int i = 0; i < position.board.length; i++)
 			for (int j = 0; j < position.board[i].length; j++)
 				this.board[i][j] = position.board[i][j];
-				
+
 		//copy the player that has to move
 		this.player = position.player;
 		//copy castle rights
 		this.castle = position.castle;
 	}
-	
+
 	/**
 	 * execute a move
-	 * 
+	 *
 	 * @param move the move that needs to be executed
 	 * @return success of failure
 	 */
@@ -357,13 +357,13 @@ public class Position {
 				//take pawn
 				this.board[move.destination.x+this.player][move.destination.y] = 0;
 			}
-			
+
 			//clear the board from en passant fields
 			for (int i = 0; i < this.board.length; i++)
 				for (int j = 0; j < this.board[i].length; j++)
 					if (Math.abs(this.board[i][j]) == 7)
 						this.board[i][j] = 0;
-			
+
 			//if a King castles
 			if (Math.abs(move.piece) == 6 && Math.abs(move.origin.x - move.destination.x)==2)
 			{
@@ -371,7 +371,7 @@ public class Position {
 				this.board[move.origin.x][move.origin.y]=0;
 				//that the piece to the destination
 				this.board[move.destination.x][move.destination.y] = move.afterPiece;
-	
+
 				//check if the king castled long
 				if (move.destination.x == 2)
 				{
@@ -388,7 +388,7 @@ public class Position {
 					//place rook next to King
 					this.board[5][move.destination.y] = 4*this.player;
 				}
-			}		
+			}
 			//if a pawn moves 2 squares
 			else if(Math.abs(move.piece) == 1 && Math.abs(move.origin.y - move.destination.y) == 2 && Math.abs(move.origin.x - move.destination.x) == 0)
 			{
@@ -406,11 +406,11 @@ public class Position {
 				//that the piece to the destination
 				this.board[move.destination.x][move.destination.y] = move.afterPiece;
 			}
-			
+
 
 			//change the player to move
 			this.player *= -1;
-			
+
 			return true;
 		}
 		catch(Error r)
@@ -418,6 +418,46 @@ public class Position {
 			System.out.print(r.getMessage());
 			return false;
 		}
+	}
+
+	/**
+	 * This programm gives the value of the charakters that are on the board back in an Array
+	 * where the first position in the Array is the counter for Black and the second position is for white
+	 */
+	public int[] materialCounter() {
+
+		//Set the value to zero and generates an array with a maximum space of two
+		int black = 0, white = 0;
+		int materialcount [] = new int [2];
+
+		//Two "for" loops to get through the whole board from A1 to H8
+		for (int i = 0; i <= 7; i++)
+		{
+			for (int j = 0; j <= 7; j++)
+			{
+				//this.board is to get Information from the class board
+				switch (this.board[i][j])
+				{
+				//It checks what charakter is on the field and if there is an charakter he will add on the Number of points that is the charakter worth
+				case 1: white += 1; break;
+				case 2: white += 3; break;
+				case 3: white += 3; break;
+				case 4: white += 5; break;
+				case 5: white += 9; break;
+
+				case -1: black += 1; break;
+				case -2: black += 3; break;
+				case -3: black += 3; break;
+				case -4: black += 5; break;
+				case -5: black += 9; break;
+				}
+			}
+		}
+		// Saves the number of points in the array
+		// 0 for black and 1 for white
+		materialcount[0] = black;
+		materialcount[1] = white;
+		return materialcount;
 	}
 
 }
