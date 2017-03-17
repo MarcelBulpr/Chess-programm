@@ -338,6 +338,27 @@ public class Position {
 	}
 
 	/**
+	 * check if the current player is mate
+	 *
+	 * @return true = he is mate false = he is not
+	 */
+	public boolean isMate()
+	{
+		try
+		{
+			if (isCheck() && canMove() == false)
+				return true;
+
+			return false;
+		}
+		catch(Error r)
+		{
+			System.out.print(r.getMessage());
+			return false;
+		}
+	}
+
+	/**
 	 * execute a move
 	 *
 	 * @param move the move that needs to be executed
