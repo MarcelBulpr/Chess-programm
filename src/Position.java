@@ -197,13 +197,16 @@ public class Position {
 	{
 		try
 		{
+//			test debug = new test();
+//			debug.printPosition(this);
+			
 			ArrayList<Point> kingpositions = this.getPositions(6*this.player);
 			//check if no king is found
 			if (kingpositions.size() < 1)
 				return false;
 
-			Point kingposition = kingpositions.get(0);
-
+			Point kingposition = kingpositions.get(0);			
+			
 			//change the player so that the opponents moves get checked
 			this.player *= -1;
 
@@ -212,7 +215,7 @@ public class Position {
 					//if a piece of the player that is to move is on the field
 					if (this.player * this.board[i][j] > 0)
 						//check if the piece can move to the King
-						if(new Move(this, new Point(i,j), kingposition).isPossible(this))
+						if(new Move(this, new Point(i,j), kingposition, false).isPossible(this))
 						{
 							this.player*=-1;
 							return true;

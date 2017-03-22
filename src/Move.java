@@ -17,18 +17,32 @@ public class Move {
 	 * @param destination the position the piece went to
 	 * @param promotion the piece a pawn promoted to
 	 */
-	public Move(Game game, Point origin, Point destination, int promotion)
+	public Move(Game game, Point origin, Point destination, int promotion, boolean...fillVariables)
 	{
+		assert fillVariables.length <= 1;
 		try
 		{
 			this.origin = origin;
 			this.destination = destination;
 			this.piece = game.position.board[origin.x][origin.y];
 			this.afterPiece = promotion;
-			//code to be added
-			//the code should take the game, the Points and the promotion and calculate the other values of this Class
-			//.x=buttonID/8
-			//.y=buttonID%8
+			
+			if (fillVariables.length == 0 || fillVariables[0] == true)
+			{
+				if (game.position.board[destination.x][destination.y] != 0 && Math.abs(game.position.board[destination.x][destination.y]) < 7)
+					this.took = true;
+				else
+					this.took = false;
+				
+				//create a new position to test the specific variables of a move
+				//this is done to minimize computing power in later use (like the Notation)
+				Position position = new Position();
+				position.copy(game.position);
+				position.makeMove(this);
+				
+				this.check = position.isCheck();
+				this.mate = position.isMate();
+			}
 		}
 		catch (Error r)
 		{
@@ -43,25 +57,39 @@ public class Move {
 	 * @param origin the position the piece came from
 	 * @param destination the position the piece went to
 	 */
-	public Move(Game game, Point origin, Point destination)
+	public Move(Game game, Point origin, Point destination, boolean... fillVariables)
 	{
+		assert fillVariables.length <= 1;
 		try
 		{
 			this.origin = origin;
 			this.destination = destination;
 			this.piece = game.position.board[origin.x][origin.y];
 			this.afterPiece = this.piece;
-			//code to be added
-			//the code should take the game, the Points and the promotion and calculate the other values of this Class
-			//.x=buttonID/8
-			//.y=buttonID%8
+			
+			if (fillVariables.length == 0 || fillVariables[0] == true)
+			{
+				if (game.position.board[destination.x][destination.y] != 0 && Math.abs(game.position.board[destination.x][destination.y]) < 7)
+					this.took = true;
+				else
+					this.took = false;
+				
+				//create a new position to test the specific variables of a move
+				//this is done to minimize computing power in later use (like the Notation)
+				Position position = new Position();
+				position.copy(game.position);
+				position.makeMove(this);
+				
+				this.check = position.isCheck();
+				this.mate = position.isMate();
+			}
 		}
 		catch (Error r)
 		{
 			System.out.println(r.getMessage());
 		}
 	}
-	
+
 	/**
 	 * Builder to create a move out of a position an origin and an destination
 	 * 
@@ -70,18 +98,31 @@ public class Move {
 	 * @param destination the position the piece went to
 	 * @param promotion the piece a pawn promoted to
 	 */
-	public Move(Position position, Point origin, Point destination, int promotion)
+	public Move(Position position, Point origin, Point destination, int promotion, boolean... fillVariables)
 	{
+		assert fillVariables.length <= 1;
 		try
 		{
 			this.origin = origin;
 			this.destination = destination;
 			this.piece = position.board[origin.x][origin.y];
 			this.afterPiece = promotion;
-			//code to be added
-			//the code should take the game, the Points and the promotion and calculate the other values of this Class
-			//.x=buttonID/8
-			//.y=buttonID%8
+			if (fillVariables.length == 0 || fillVariables[0] == true)
+			{
+				if (position.board[destination.x][destination.y] != 0 && Math.abs(position.board[destination.x][destination.y]) < 7)
+					this.took = true;
+				else
+					this.took = false;
+				
+				//create a new position to test the specific variables of a move
+				//this is done to minimize computing power in later use (like the Notation)
+				Position testPosition = new Position();
+				testPosition.copy(testPosition);
+				testPosition.makeMove(this);
+				
+				this.check = testPosition.isCheck();
+				this.mate = testPosition.isMate();
+			}
 		}
 		catch (Error r)
 		{
@@ -96,18 +137,32 @@ public class Move {
 	 * @param origin the position the piece came from
 	 * @param destination the position the piece went to
 	 */
-	public Move(Position position, Point origin, Point destination)
+	public Move(Position position, Point origin, Point destination, boolean... fillVariables)
 	{
+		assert fillVariables.length <= 1;
 		try
 		{
 			this.origin = origin;
 			this.destination = destination;
 			this.piece = position.board[origin.x][origin.y];
 			this.afterPiece = this.piece;
-			//code to be added
-			//the code should take the game, the Points and the promotion and calculate the other values of this Class
-			//.x=buttonID/8
-			//.y=buttonID%8
+			
+			if (fillVariables.length == 0 || fillVariables[0] == true)
+			{
+				if (position.board[destination.x][destination.y] != 0 && Math.abs(position.board[destination.x][destination.y]) < 7)
+					this.took = true;
+				else
+					this.took = false;
+				
+				//create a new position to test the specific variables of a move
+				//this is done to minimize computing power in later use (like the Notation)
+				Position testPosition = new Position();
+				testPosition.copy(testPosition);
+				testPosition.makeMove(this);
+				
+				this.check = testPosition.isCheck();
+				this.mate = testPosition.isMate();
+			}
 		}
 		catch (Error r)
 		{
@@ -138,7 +193,7 @@ public class Move {
 	/**
 	 * if the player took 
 	 */
-	boolean taken;
+	boolean took;
 	
 	/**
 	 * the piece type that moved
