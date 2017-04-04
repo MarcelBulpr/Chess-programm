@@ -55,7 +55,7 @@ public class Game {
 			}  
 			if(i%2==1){
 				notation+="\t";
-	
+	 
 			}
 			switch (Math.abs(moves.get(i).piece)) {
 			case 2:
