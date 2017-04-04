@@ -38,29 +38,25 @@ public class Game {
 	 *
 	 * @return the Notation
 	 */
-	public String getNotation ()
-	{
+	public String getNotation() {
 
-		
-		String notation="";
-		
+		String notation = "";
 
 		for (int i = 0; i < this.moves.size(); i++) {
-			if(i%2==0){
-				
-				
-				
-				notation+="\n"+(i/2+1+".");
-             
-			}  
-			if(i%2==1){
-				notation+="\t";
-	 
+			if (i % 2 == 0) {
+
+				notation += "\n" + (i / 2 + 1 + ".");
+
+			}
+
+			if (i % 2 == 1) {
+				notation += "\t";
+
 			}
 			switch (Math.abs(moves.get(i).piece)) {
 			case 2:
 				notation += "S";
-			   break;
+				break;
 			case 3:
 				notation += "L";
 				break;
@@ -74,53 +70,43 @@ public class Game {
 				notation += "K";
 				break;
 			}
-			
+
 			notation += this.getGameCoordinates(moves.get(i).origin);
- 
 
+			if (this.moves.get(i).took == true) {
+				notation += "x";
 
-
-		
-			 if(this.moves.get(i).took==true){
-            	  notation +="x";
-
-              } else if(this.moves.get(i).took==false){
-           notation+=" - ";
-              }
-
-
-
+			} else if (this.moves.get(i).took == false) {
+				notation += " - ";
+			}
 
 			notation += this.getGameCoordinates(moves.get(i).destination);
 
+			if (this.moves.get(i).check == true) {
+				notation += "+";
+			} else if (this.moves.get(i).mate == true) {
+				notation += "#";
 
-			if(this.moves.get(i).check==true){
-				notation+="+";
-			}	else if(this.moves.get(i).mate==true){
-			notation +="#";
-
-	 }
-
-
-
-     if(this.moves.get(i).piece != this.moves.get(i).afterPiece){
-			switch (Math.abs(moves.get(i).afterPiece)) {
-			case 2:
-				notation += "S ";
-			   break;
-			case 3:
-				notation += "L ";
-				break;
-			case 4:
-				notation += "T ";
-				break;
-			case 5:
-				notation += "D ";
-				break;
 			}
 
-     }	
-     }
+			if (this.moves.get(i).piece != this.moves.get(i).afterPiece) {
+				switch (Math.abs(moves.get(i).afterPiece)) {
+				case 2:
+					notation += "S ";
+					break;
+				case 3:
+					notation += "L ";
+					break;
+				case 4:
+					notation += "T ";
+					break;
+				case 5:
+					notation += "D ";
+					break;
+				}
+
+			}
+		}
 
 		return notation;
 	}
