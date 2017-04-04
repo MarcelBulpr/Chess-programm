@@ -40,10 +40,92 @@ public class Game {
 	 */
 	public String getNotation ()
 	{
-		//code to be added
-		//the code should take all moves of the game and then generate a String that represents the Notation
-		return null;
+
+		
+		String notation="";
+		
+
+		for (int i = 0; i < this.moves.size(); i++) {
+			if(i%2==0){
+				
+				
+				
+				notation+="\n"+(i/2+1+".");
+             
+			}  
+			if(i%2==1){
+				notation+="\t";
+	
+			}
+			switch (Math.abs(moves.get(i).piece)) {
+			case 2:
+				notation += "S";
+			   break;
+			case 3:
+				notation += "L";
+				break;
+			case 4:
+				notation += "T";
+				break;
+			case 5:
+				notation += "D";
+				break;
+			case 6:
+				notation += "K";
+				break;
+			}
+			
+			notation += this.getGameCoordinates(moves.get(i).origin);
+ 
+
+
+
+		
+			 if(this.moves.get(i).took==true){
+            	  notation +="x";
+
+              } else if(this.moves.get(i).took==false){
+           notation+=" - ";
+              }
+
+
+
+
+			notation += this.getGameCoordinates(moves.get(i).destination);
+
+
+			if(this.moves.get(i).check==true){
+				notation+="+";
+			}	else if(this.moves.get(i).mate==true){
+			notation +="#";
+
+	 }
+
+
+
+     if(this.moves.get(i).piece != this.moves.get(i).afterPiece){
+			switch (Math.abs(moves.get(i).afterPiece)) {
+			case 2:
+				notation += "S ";
+			   break;
+			case 3:
+				notation += "L ";
+				break;
+			case 4:
+				notation += "T ";
+				break;
+			case 5:
+				notation += "D ";
+				break;
+			}
+
+     }	
+     }
+
+		return notation;
 	}
+	
+
 
 	/**
 	 * Copy the game class to another ram address
