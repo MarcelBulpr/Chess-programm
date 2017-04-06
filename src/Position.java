@@ -9,7 +9,12 @@ import java.util.ArrayList;
  */
 public class Position {
 
-	public Position()
+	/**
+	 * constructor for default position
+	 *
+	 * @param handicap remove the pieces that are specified (from queen to King side, the f pawn is the first that is removed)
+	 */
+	public Position(int... handicap)
 	{
 		try
 		{
@@ -49,6 +54,48 @@ public class Position {
 
 			this.castle = 1111;
 			this.player = 1;
+
+			for (int h:handicap)
+			{
+				//white
+				int row = 6;
+				//black
+				if (h<0)
+					row = 1;
+
+				if (Math.abs(h) == 1)
+				{
+					if (Math.abs(this.board[5][row]) == 1)
+					{
+						this.board[5][row] = 0;
+						break;
+					}
+
+					for (int i = 0; i <= 7; i++)
+					{
+						if (Math.abs(this.board[i][row]) == 1)
+						{
+							this.board[i][row] = 0;
+							break;
+						}
+					}
+				}
+
+				//white
+				row = 7;
+				//black
+				if (h<0)
+					row = 0;
+
+				for (int i = 0; i <= 7; i++)
+				{
+					if (this.board[i][h] == 1)
+					{
+						this.board[i][h] = 0;
+						break;
+					}
+				}
+			}
 		}
 		catch (Error r)
 		{
@@ -199,14 +246,14 @@ public class Position {
 		{
 //			test debug = new test();
 //			debug.printPosition(this);
-			
+
 			ArrayList<Point> kingpositions = this.getPositions(6*this.player);
 			//check if no king is found
 			if (kingpositions.size() < 1)
 				return false;
 
-			Point kingposition = kingpositions.get(0);			
-			
+			Point kingposition = kingpositions.get(0);
+
 			//change the player so that the opponents moves get checked
 			this.player *= -1;
 

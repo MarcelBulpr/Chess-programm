@@ -135,6 +135,12 @@ public class Game {
 		}
 	}
 
+	/**
+	 * executes a given move
+	 *
+	 * @param move the move to be executed
+	 * @return success = true else false
+	 */
 	public boolean makeMove(Move move)
 	{
 		try
