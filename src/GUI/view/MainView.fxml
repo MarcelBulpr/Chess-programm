@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.embed.swing.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.8164642375168691" layoutX="5.0" layoutY="3.0" prefHeight="605.0" prefWidth="744.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="716.0" prefWidth="623.0">
+               <children>
+                  <GridPane gridLinesVisible="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="a8">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="b8" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="c8" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="d8" GridPane.columnIndex="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="e8" GridPane.columnIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="f8" GridPane.columnIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="g8" GridPane.columnIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="h8" GridPane.columnIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="a7" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="b7" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="c7" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="d7" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="e7" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="f7" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="g7" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="h7" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="a6" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="b6" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="c6" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="d6" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="e6" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="f6" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="g6" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="h6" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="a5" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="b5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="c5" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="d5" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="e5" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="f5" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="g5" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="h5" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="a4" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="b4" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="c4" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="d4" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="e4" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="f4" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="g4" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="h4" GridPane.columnIndex="7" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="a3" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="b3" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="c3" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="d3" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="e3" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="f3" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="g3" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="h3" GridPane.columnIndex="7" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="a2" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="b2" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="c2" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="d2" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="e2" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="f2" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="g2" GridPane.columnIndex="6" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="h2" GridPane.columnIndex="7" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="a1" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="b1" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="c1" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="d1" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="e1" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="f1" GridPane.columnIndex="5" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e09c2d;" text="g1" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #e0e0e0;" text="h1" GridPane.columnIndex="7" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <ImageView>
+                           <image>
+                              <Image url="@rook-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@knight-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="2">
+                           <image>
+                              <Image url="@bishop-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="5">
+                           <image>
+                              <Image url="@bishop-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="7">
+                           <image>
+                              <Image url="@rook-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="3">
+                           <image>
+                              <Image url="@queen-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="3" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@queen-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="4">
+                           <image>
+                              <Image url="@King-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="6">
+                           <image>
+                              <Image url="@knight-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@knight-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="6" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@knight-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="2" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@bishop-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="5" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@bin/bishop-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="4" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@King-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@rook-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="7" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@rook-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@pawn-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@pawn-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="2" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@pawn-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="3" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@pawn-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="4" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@pawn-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="5" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@pawn-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="6" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@pawn-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="7" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@pawn-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@pawn-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@pawn-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@pawn-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@pawn-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@pawn-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@pawn-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@pawn-black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="7" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@pawn-black.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="75.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="75.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="75.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="75.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="75.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="75.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="75.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="75.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="121.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <Text layoutX="7.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notation" wrappingWidth="118.13671875" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</Pane>
