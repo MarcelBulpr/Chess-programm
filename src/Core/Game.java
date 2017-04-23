@@ -164,7 +164,7 @@ public class Game {
 	}
 
 	/**
-	 * methodeto get the game coordinates (like d4) from array coordinates
+	 * methode to get the game coordinates (like d4) from array coordinates
 	 *
 	 * @param coordinates the coordinates from the array
 	 * @return String containing a square name (like d4)
