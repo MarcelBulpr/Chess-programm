@@ -1,3 +1,4 @@
+package Core;
 
 /**
  * Class to save all significant data for one player
