@@ -427,7 +427,7 @@ public class Position {
 				//that the piece to the destination
 				this.board[move.destination.x][move.destination.y] = move.afterPiece;
 				//take pawn
-				this.board[move.destination.x+this.player][move.destination.y] = 0;
+				this.board[move.destination.x][move.destination.y+this.player] = 0;
 			}
 
 			//clear the board from en passant fields
