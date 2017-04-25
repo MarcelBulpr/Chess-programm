@@ -493,7 +493,7 @@ public class Position {
 	}
 
 	/**
-	 * This programm gives the value of the characters that are on the board back in an Array
+	 * This program gives the value of the characters that are on the board back in an Array
 	 * where the first position in the Array is the counter for Black and the second position is for white
 	 */
 	public int[] materialCounter() {
