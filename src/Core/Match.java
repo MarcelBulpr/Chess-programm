@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 /**
  * Class to save all significant data for one match
- * 
+ *
  * @author Marcel
  *
  */
@@ -11,7 +11,7 @@ public class Match {
 
 	/**
 	 * Builder for a match that takes to players
-	 * 
+	 *
 	 * @param player1 the first Player
 	 * @param player2 the second Player
 	 */
@@ -28,10 +28,10 @@ public class Match {
 			System.out.println(r.getMessage());
 		}
 	}
-	
+
 	/**
 	 * Builder for a match that takes just two names and creates the players itself
-	 * 
+	 *
 	 * @param name1 the name of the first player
 	 * @param name2 the name of the second player
 	 */
@@ -48,19 +48,19 @@ public class Match {
 			System.out.println(r.getMessage());
 		}
 	}
-	
+
 	/**
 	 * the first player of the match
 	 */
-	Player player1;
-	
+	public Player player1;
+
 	/**
 	 * the second player of the match
 	 */
-	Player player2;
-	
+	public Player player2;
+
 	/**
 	 * all the games that were played in the match
 	 */
-	ArrayList<Game> games;
+	public ArrayList<Game> games;
 }

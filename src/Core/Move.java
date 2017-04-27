@@ -174,37 +174,37 @@ public class Move {
 	/**
 	 * the coordinates of the origin of the piece
 	 */
-	Point origin;
+	public Point origin;
 
 	/**
 	 * the coordinates of the point the piece is moving to
 	 */
-	Point destination;
+	public Point destination;
 
 	/**
 	 * if the player checked his opponent
 	 */
-	boolean check;
+	public boolean check;
 
 	/**
 	 * if the player mated his opponent
 	 */
-	boolean mate;
+	public boolean mate;
 
 	/**
 	 * if the player took
 	 */
-	boolean took;
+	public boolean took;
 
 	/**
 	 * the piece type that moved
 	 */
-	int piece;
+	public int piece;
 
 	/**
 	 * indicates the piece type after the move (relevant if a pawn promotes)
 	 */
-	int afterPiece;
+	public int afterPiece;
 
 	/**
 	 * check if a move would be legal

@@ -27,12 +27,12 @@ public class Game {
 	/**
 	 * the current position
 	 */
-	Position position;
+	public Position position;
 
 	/**
 	 * a List with all moves that the players have made
 	 */
-	ArrayList<Move> moves;
+	public ArrayList<Move> moves;
 
 	/**
 	 * Method to generate a Notation String
@@ -111,7 +111,7 @@ public class Game {
 
 		return notation;
 	}
-	
+
 
 
 	/**

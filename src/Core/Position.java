@@ -115,7 +115,7 @@ public class Position {
 	 * 7=en passant
 	 * positive values = white, negative values = black
 	 */
-	int[][]board;
+	public int[][]board;
 
 	/**
 	 * variable that indicates if one player can castle
@@ -125,12 +125,12 @@ public class Position {
 	 * wl 0010
 	 * bl 0001
 	 */
-	int castle;
+	public int castle;
 
 	/**
 	 * the player that has to move. positive = white to move. negative = black to move.
 	 */
-	int player;
+	public int player;
 
 	/**
 	 * check if a specific player can castle
