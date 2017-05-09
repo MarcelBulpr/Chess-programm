@@ -1,11 +1,11 @@
 package GUI;
 
 import java.io.IOException;
-
-import javafx.application.Application; //Importing the fxml libraries
+import javafx.application.Application; 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 /**
  * Class to load/display the GUI
@@ -15,12 +15,12 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 	/**
-	 * 
+	 *
 	 * @param Setting 'Pane' as the main layout
 	 */
-	private Stage primaryStage; 
-	private Pane mainLayout;    
-	 /** 
+	private Stage primaryStage;
+	private Pane mainLayout;
+	 /**
 	  * @param Setting 'Stage' as the primary stage
 	  */
 	@Override
@@ -39,16 +39,14 @@ public class Main extends Application {
 
 	MainWindowController mainWindowController = loader.getController();//function to load the Controller class
 	mainWindowController.setMain(this);
-	 /** 
+	 /**
 	  * @param creating a scene which will be the base for everything that will be displayed
 	  */
-	Scene scene = new Scene(mainLayout); 
+	Scene scene = new Scene(mainLayout);
 	primaryStage.setScene(scene);
 	primaryStage.show();
 
 	}
-
-
 
 	public static void main(String[] args) {
 		launch(args);

@@ -14,7 +14,7 @@
    <children>
       <SplitPane dividerPositions="0.8164642375168691" layoutX="5.0" layoutY="3.0" prefHeight="605.0" prefWidth="744.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="716.0" prefWidth="623.0">
+          <AnchorPane fx:id="sp1" minHeight="0.0" minWidth="0.0" prefHeight="716.0" prefWidth="623.0">
                <children>
                   <GridPane gridLinesVisible="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -522,9 +522,10 @@
                   </GridPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="121.0" SplitPane.resizableWithParent="false">
+          <AnchorPane fx:id="sp2" minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="121.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Text layoutX="7.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notation" wrappingWidth="118.13671875" />
+                  <Text layoutX="7.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notation" textOrigin="TOP" wrappingWidth="118.13671875" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="300.0" />
+                  <TextFlow fx:id="mCount" layoutX="-20.0" layoutY="74.0" prefHeight="200.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
