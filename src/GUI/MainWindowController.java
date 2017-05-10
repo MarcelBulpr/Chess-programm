@@ -98,10 +98,10 @@ public class MainWindowController {
 					execute(move);
 				}
 				//Materialcounter
-				int materialcountwhite = game.position.materialCounter()[1];
+				int materialcountwhite = game.position.materialCounter()[0];
 				 mCountBlack.setText( materialcountwhite + "");
 
-				 int materialcountblack = game.position.materialCounter()[0];
+				 int materialcountblack = game.position.materialCounter()[1];
 				 mCountWhite.setText(materialcountblack + "");
 				 //Notation
 				 String notationText = game.getNotation();

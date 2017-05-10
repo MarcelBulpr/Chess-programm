@@ -10,9 +10,9 @@
    <children>
       <AnchorPane prefHeight="315.0" prefWidth="304.0">
          <children>
-            <Label fx:id="endMessage" layoutX="138.0" layoutY="32.0" textAlignment="CENTER" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+            <Label fx:id="endMessage" alignment="CENTER" layoutX="138.0" layoutY="32.0" text="Winner" textAlignment="CENTER" underline="true" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
                <font>
-                  <Font size="18.0" />
+                  <Font size="31.0" />
                </font></Label>
          </children>
       </AnchorPane>

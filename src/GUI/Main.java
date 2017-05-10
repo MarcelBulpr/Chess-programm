@@ -105,9 +105,9 @@ public class Main extends Application {
 	 AnchorPane root = loader.load();
 	 EndscreenController controller = loader.<EndscreenController>getController();
 	 if (whiteWon)
-		 controller.setText("White won");
+		 controller.setText("White won!");
 	 else if (blackWon)
-		 controller.setText("Black won");
+		 controller.setText("Black won!");
 	 else
 		 controller.setText("Remise");
 	 controller.setWindowController(mainWindowController);
