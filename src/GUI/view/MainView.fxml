@@ -524,11 +524,19 @@
             </AnchorPane>
           <AnchorPane fx:id="sp2" maxHeight="603.0" maxWidth="136.0" minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="136.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Text layoutX="14.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notation" textOrigin="TOP" wrappingWidth="118.13671875" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="3.86328125" />
-                  <Label fx:id="mCountWhite" layoutX="6.0" layoutY="186.0" text="Please make a move!" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" />
-                  <Text layoutX="6.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materialcounter White:" underline="true" wrappingWidth="124.517578125" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" />
-                  <Text layoutX="6.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materialcounter Black:" underline="true" wrappingWidth="124.517578125" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" />
-                  <Label fx:id="mCountBlack" layoutX="9.0" layoutY="225.0" prefHeight="17.0" prefWidth="33.0" text="Please make a move!" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" />
+                  <Label fx:id="mCountWhite" layoutX="4.0" layoutY="511.0" text="39" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="511.0" />
+                  <Text layoutX="6.0" layoutY="507.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materialcounter White:" underline="true" wrappingWidth="124.517578125" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="5.482421875" AnchorPane.topAnchor="494.0" />
+                  <Text layoutX="6.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materialcounter Black:" underline="true" wrappingWidth="124.517578125" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="5.482421875" AnchorPane.topAnchor="6.0" />
+                  <Label fx:id="mCountBlack" layoutX="4.0" layoutY="23.0" prefHeight="17.0" prefWidth="33.0" text="39" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="23.0" />
+                  <Button fx:id="tutorial" layoutX="80.0" layoutY="568.0" mnemonicParsing="false" onAction="#Tutorial" prefHeight="17.0" prefWidth="52.0" text="Help" />
+                  <Text layoutX="4.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notation:" underline="true" AnchorPane.leftAnchor="4.0" />
+                  <ScrollPane layoutX="4.0" layoutY="114.0" prefHeight="381.0" prefWidth="128.0" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="114.0">
+                     <content>
+                        <Label fx:id="Notation" />
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="Restart" layoutX="2.0" layoutY="568.0" mnemonicParsing="false" onAction="#OpenRestart" text="Restart" />
+                  <Text layoutX="12.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="White                Black" textAlignment="JUSTIFY" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.759765625" />
                </children>
             </AnchorPane>
         </items>

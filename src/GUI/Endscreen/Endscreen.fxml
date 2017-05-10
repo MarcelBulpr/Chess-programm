@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="257.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.view.EndscreenController">
+   <children>
+      <AnchorPane prefHeight="315.0" prefWidth="304.0">
+         <children>
+            <Label fx:id="endMessage" layoutX="138.0" layoutY="32.0" textAlignment="CENTER" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="newGame" layoutX="126.0" layoutY="131.0" mnemonicParsing="false" onAction="#restart" text="New Game" textAlignment="CENTER" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="130.0" />
+      <Button fx:id="back" layoutX="100.0" layoutY="173.0" mnemonicParsing="false" onAction="#backToMatch" text="Back to Match" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="170.0" />
+      <Button fx:id="exit" layoutX="100.0" layoutY="218.0" mnemonicParsing="false" onAction="#closeAll" text="Exit" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="210.0" />
+   </children>
+</AnchorPane>

@@ -8,27 +8,35 @@ import GUI.Main;
 import GUI.MainWindowController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.*;
 
 public class PromotionController {
-	private Main main;
 	MainWindowController mainWindowController;
+
+
 	@FXML
-	private void promQueen(ActionEvent promQueen) throws IOException{
+	private void promQueen(ActionEvent e) throws IOException{
 		mainWindowController.queenPromotion();
+		((Button)e.getSource()).getScene().getWindow().hide();
 	}
 	@FXML
-	private void promBishop(ActionEvent promBishop) throws IOException{
-
+	private void promBishop(ActionEvent e) throws IOException{
+		mainWindowController.bishopPromotion();
+		((Button)e.getSource()).getScene().getWindow().hide();
 	}
 	@FXML
-	private void promKnight(ActionEvent promKnight) throws IOException{
+	private void promKnight(ActionEvent e) throws IOException{
 
-
+		mainWindowController.knightPromotion();
+		((Button)e.getSource()).getScene().getWindow().hide();
 	}
 	@FXML
-	private void promRook(ActionEvent promRook) throws IOException{
-
+	private void promRook(ActionEvent e) throws IOException{
+		mainWindowController.rookPromotion();
+		((Button)e.getSource()).getScene().getWindow().hide();
 	}
+
 
 	public void setWindowController(MainWindowController mainWindowController)
 	{

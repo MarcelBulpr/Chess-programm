@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="143.0" prefWidth="274.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="GUI.view.RestartController">
+   <children>
+      <Text layoutX="53.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are You sure You want to restart?" textAlignment="CENTER" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="restartOk" layoutX="4.0" layoutY="59.0" mnemonicParsing="false" onAction="#yes" prefHeight="25.0" prefWidth="130.0" text="Yes" />
+      <Button fx:id="noRestart" layoutX="137.0" layoutY="59.0" mnemonicParsing="false" onAction="#no" prefHeight="25.0" prefWidth="130.0" text="No" />
+   </children>
+</AnchorPane>
