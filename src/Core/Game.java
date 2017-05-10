@@ -76,7 +76,7 @@ public class Game {
 			notation += this.getGameCoordinates(moves.get(i).origin);
 
 			if (this.moves.get(i).took == true) {
-				notation += "x";
+				notation += " x ";
 				// "x" shows the chess piece beat the other chess piece
 
 			} else if (this.moves.get(i).took == false) {
