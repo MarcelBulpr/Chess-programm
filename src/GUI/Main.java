@@ -1,12 +1,17 @@
 package GUI;
 
 import java.io.IOException;
-import javafx.application.Application; 
+
+import GUI.view.PromotionController;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 /**
  * Class to load/display the GUI
  *
@@ -19,7 +24,8 @@ public class Main extends Application {
 	 * @param Setting 'Pane' as the main layout
 	 */
 	private Stage primaryStage;
-	private Pane mainLayout;
+	private static Pane mainLayout;
+	private MainWindowController mainWindowController;
 	 /**
 	  * @param Setting 'Stage' as the primary stage
 	  */
@@ -37,7 +43,7 @@ public class Main extends Application {
 
 	mainLayout = loader.load();
 
-	MainWindowController mainWindowController = loader.getController();//function to load the Controller class
+	mainWindowController = loader.getController();//function to load the Controller class
 	mainWindowController.setMain(this);
 	 /**
 	  * @param creating a scene which will be the base for everything that will be displayed
@@ -46,6 +52,21 @@ public class Main extends Application {
 	primaryStage.setScene(scene);
 	primaryStage.show();
 
+	}
+	public void showPromotionScene() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("promotion/Promotion.fxml"));
+		AnchorPane root = loader.load();
+		PromotionController promotionController = loader.getController();
+		System.out.print(mainWindowController.toString());
+		promotionController.setWindowController(mainWindowController);
+		Scene scene = new Scene(root);
+		Stage promotion = new Stage();
+		promotion.initModality(Modality.APPLICATION_MODAL);
+		promotion.initStyle(StageStyle.UNIFIED);
+		promotion.setTitle("Promotion");
+		promotion.setScene(scene);
+		promotion.show();
 	}
 
 	public static void main(String[] args) {

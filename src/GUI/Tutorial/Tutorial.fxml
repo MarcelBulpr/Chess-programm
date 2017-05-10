@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <tabs>
+    <Tab text="Figuren">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TabPane prefHeight="371.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="König">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="103.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="König">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Der König ist die wichtigste Figur beim Schachspiel," />
+                                    <Text layoutX="14.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="da es Ziel des Spiels ist, den gegnerischen " />
+                                    <Text layoutX="14.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="König matt zu setzen." />
+                                    <Text layoutX="14.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man besitzt einen König." />
+                                    <Text layoutX="300.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man kann den König in die Richtungen bewegen:" />
+                                    <ImageView fitHeight="274.0" fitWidth="286.0" layoutX="300.0" layoutY="54.0">
+                                       <image>
+                                          <Image url="@../../Kö.JPG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="3.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/K%C3%B6nig_%28Schach%29" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Dame">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="105.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dame">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="18.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Die Dame ist die stärkste Figur beim Schachspiel. " />
+                                    <Text layoutX="18.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zusammen mit dem Turm gehört" wrappingWidth="206.693359375" />
+                                    <Text layoutX="18.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sie zu den Schwerfiguren." />
+                                    <Text layoutX="18.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man besitzt eine Dame." />
+                                    <Text layoutX="300.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man kann die Dame in die Richtungen bewegen:" />
+                                    <ImageView fitHeight="275.0" fitWidth="288.0" layoutX="300.0" layoutY="53.0">
+                                       <image>
+                                          <Image url="@../../da.JPG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="7.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/Dame_%28Schach%29" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Turm">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="105.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turm">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="27.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Der Turm ist die zweitstärkste Figur beim Schachspiel." />
+                                    <Text layoutX="27.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zusammen mit der Dame gehört er " />
+                                    <Text layoutX="27.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="zu den Schwerfiguren." />
+                                    <Text layoutX="27.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man unterscheidet in der Grundstellung und in der " />
+                                    <Text layoutX="27.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eröffnung zwischen Damenturm und Königsturm." />
+                                    <Text layoutX="27.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man besitzt zwei Türme." />
+                                    <Text layoutX="311.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man kann den Turm in die Richtungen bewegen:" />
+                                    <ImageView fitHeight="281.0" fitWidth="282.0" layoutX="311.0" layoutY="54.0">
+                                       <image>
+                                          <Image url="@../../tu.JPG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="3.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/Turm_%28Schach%29" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Läufer">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="102.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Läufer">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="12.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man besitzt einen Läufer innerhalb der weißen" wrappingWidth="261.15234375" />
+                                    <Text layoutX="12.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Läufer können ihre Felderfarbe nicht wechseln." />
+                                    <Text layoutX="12.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man besitzt zwei Läufer." />
+                                    <Text layoutX="300.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man kann die Läufer in die Richtungen bewegen:" />
+                                    <ImageView fitHeight="297.0" fitWidth="296.0" layoutX="300.0" layoutY="41.0">
+                                       <image>
+                                          <Image url="@../../läu.JPG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="12.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="und einen Läufer in den schwarzen Feldern." wrappingWidth="241.802734375" />
+                                    <Text layoutX="3.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/L%C3%A4ufer_%28Schach%29" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Springer">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Springer">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man besitzt zwei Springer." />
+                                    <Text layoutX="315.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man kann die Springer in die Richtungen bewegen:" />
+                                    <ImageView fitHeight="292.0" fitWidth="296.0" layoutX="300.0" layoutY="45.0">
+                                       <image>
+                                          <Image url="@../../spri.JPG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="14.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Der Springer ist die einzige Figur die über andere Figuren drüber springen kann." wrappingWidth="258.29296875" />
+                                    <Text layoutX="3.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/Springer_%28Schach%29" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Bauer">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="99.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bauer">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Jeder Spieler hat zu Partiebeginn acht Bauern, die einen Wall vor den übrigen Figuren bilden." wrappingWidth="250.79296875" />
+                                    <Text layoutX="14.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man besitzt acht Bauern." />
+                                    <Text layoutX="323.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Man kann die Bauern in die Richtungen bewegen:" />
+                                    <ImageView fitHeight="286.0" fitWidth="274.0" layoutX="323.0" layoutY="54.0">
+                                       <image>
+                                          <Image url="@../../ba.JPG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="3.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/Bauer_%28Schach%29" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Züge">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TabPane prefHeight="372.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Rochade">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="88.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rochade">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="37.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Die Rochade ist der Spielzug im Schach, bei dem König und Turm einer Farbe bewegt werden.Es handelt sich um den einzigen Doppelzug , der nach den Schachregeln erlaubt ist." wrappingWidth="238.4140625" />
+                                    <ImageView fitHeight="125.0" fitWidth="200.0" layoutX="313.0" layoutY="183.0">
+                                       <image>
+                                          <Image url="@../../lroch.JPG" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="127.0" fitWidth="200.0" layoutX="88.0" layoutY="182.0">
+                                       <image>
+                                          <Image url="@../../kroch.JPG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="88.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kurze Rochade:" />
+                                    <Text layoutX="313.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lange Rochade:" />
+                                    <Text layoutX="3.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/Rochade" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="En Passant">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="3.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/En_passant" />
+                                    <Text layoutX="67.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En Passant">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Der französische Ausdruck en passant lässt sich mit im Vorbeigehen, im Vorübergehen oder auch beiläufig übersetzen und bezeichnet im Schachspiel einen besonderen Zug eines Bauern." wrappingWidth="275.453125" />
+                                    <Text layoutX="370.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Es wird so ausgeführt:" />
+                                    <ImageView fitHeight="220.0" fitWidth="218.0" layoutX="351.0" layoutY="54.0">
+                                       <image>
+                                          <Image url="@../../enpa.JPG" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Umwandlung">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="3.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle: https://de.wikipedia.org/wiki/Umwandlung_%28Schach%29" />
+                                    <Text layoutX="200.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Umwandlung">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="144.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eine Umwandlung oder Bauernumwandlung im Schach erfolgt, wenn ein Bauer die gegnerische Grundreihe erreicht. Der Bauer ist sofort, als Bestandteil dieses Zuges, durch eine Dame, einen Turm, einen Läufer oder einen Springer gleicher Farbe zu ersetzen, wobei die umgewandelte Figur sofort wirkt. In der Regel wird in eine Dame umgewandelt, da sie die stärkste Figur ist." wrappingWidth="324.576171875" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

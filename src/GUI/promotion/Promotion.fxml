@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="271.0" prefWidth="245.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="GUI.view.PromotionController">
+   <children>
+      <AnchorPane layoutX="-159.0" layoutY="-158.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button fx:id="promQueen" layoutX="96.0" layoutY="101.0" mnemonicParsing="false" onAction="#promQueen" text="Queen" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" />
+      <Button fx:id="promBishop" layoutX="97.0" layoutY="136.0" mnemonicParsing="false" onAction="#promBishop" text="Bishop" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" />
+      <Button fx:id="promKnight" layoutX="97.0" layoutY="171.0" mnemonicParsing="false" onAction="#promKnight" text="Knight" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" />
+      <Button fx:id="promRook" layoutX="97.0" layoutY="205.0" mnemonicParsing="false" onAction="#promRook" text="Rook" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" />
+      <Text layoutX="47.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can promote!" textAlignment="CENTER" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
