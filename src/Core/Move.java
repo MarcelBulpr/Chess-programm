@@ -327,7 +327,7 @@ public class Move {
 				else if (this.origin.y - this.destination.y == position.player * 2)
 				{
 					//if the pawn moves straight
-					if (this.origin.x == this.destination.x)
+					if (this.origin.x == this.destination.x && (this.origin.y == 1 || this.origin.y == 6))
 						//if the destination has no piece on it and if the path is clear
 						if (position.board[this.destination.x][this.destination.y] == 0 && new Move(position, new Point(this.origin.x, this.origin.y), new Point(this.destination.x, this.destination.y + position.player)).isPossible(position))
 							return true;
