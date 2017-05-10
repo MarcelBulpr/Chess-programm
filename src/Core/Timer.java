@@ -10,6 +10,13 @@ public class Timer extends Thread {
 	public boolean running = false;
 	public int msek = 0, sek = 5, min = 0, hour = 0;
 
+	public Timer(int h, int m, int s)
+	{
+		this.hour = h;
+		this.min = m;
+		this.sek = s;
+	}
+	
 	// Start the thread with run
 	public void run() {
 
