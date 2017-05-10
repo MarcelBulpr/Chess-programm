@@ -47,7 +47,7 @@ public class Game {
 			if (i % 2 == 0) {
 
 				notation += "\n" + (i / 2 + 1 + ".");
-
+				// number of the chess notation
 			}
 
 			if (i % 2 == 1) {
@@ -70,15 +70,18 @@ public class Game {
 			case 6:
 				notation += "K";
 				break;
+			// shows chess piece selection
 			}
 
 			notation += this.getGameCoordinates(moves.get(i).origin);
 
 			if (this.moves.get(i).took == true) {
 				notation += "x";
+				// "x" shows the chess piece beat the other chess piece
 
 			} else if (this.moves.get(i).took == false) {
 				notation += " - ";
+				// "-" shows chess piece move to the position
 			}
 
 			notation += this.getGameCoordinates(moves.get(i).destination);
@@ -87,7 +90,7 @@ public class Game {
 				notation += "+";
 			} else if (this.moves.get(i).mate == true) {
 				notation += "#";
-
+				// "+#" shows chess piece checkmated.
 			}
 
 			if (this.moves.get(i).piece != this.moves.get(i).afterPiece) {
@@ -104,12 +107,14 @@ public class Game {
 				case 5:
 					notation += "D ";
 					break;
+				// shows chess piece can be convert
 				}
 
 			}
 		}
 
 		return notation;
+		// return the notation
 	}
 
 
