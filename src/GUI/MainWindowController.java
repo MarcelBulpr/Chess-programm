@@ -3,6 +3,7 @@ import Core.*;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -25,19 +26,19 @@ import javafx.stage.Stage;
  * Class that control the different functionality of the GUI
  */
 public class MainWindowController {
-	private String wPawnDirectory = new File("").getAbsolutePath() + "\\bin\\pawn-white.png";
-	private String wKnightDirectory = new File("").getAbsolutePath() + "\\bin\\knight-white.png";
-	private String wBishopDirectory = new File("").getAbsolutePath() + "\\bin\\bishop-white.png";
-	private String wRookDirectory = new File("").getAbsolutePath() + "\\bin\\rook-white.png";
-	private String wQueenDirectory = new File("").getAbsolutePath() + "\\bin\\queen-white.png";
-	private String wKingDirectory = new File("").getAbsolutePath() + "\\bin\\King-white.png";
+	private URL wPawnDirectory = Main.class.getResource("/pawn-white.png");
+	private URL wKnightDirectory = Main.class.getResource("/knight-white.png");
+	private URL wBishopDirectory = Main.class.getResource("/bishop-white.png");
+	private URL wRookDirectory = Main.class.getResource("/rook-white.png");
+	private URL wQueenDirectory = Main.class.getResource("/queen-white.png");
+	private URL wKingDirectory = Main.class.getResource("/King-white.png");
 
-	private String bPawnDirectory = new File("").getAbsolutePath() + "\\bin\\pawn-black.png";
-	private String bKnightDirectory = new File("").getAbsolutePath() + "\\bin\\knight-black.png";
-	private String bBishopDirectory = new File("").getAbsolutePath() + "\\bin\\bishop-black.png";
-	private String bRookDirectory = new File("").getAbsolutePath() + "\\bin\\rook-black.png";
-	private String bQueenDirectory = new File("").getAbsolutePath() + "\\bin\\queen-black.png";
-	private String bKingDirectory = new File("").getAbsolutePath() + "\\bin\\King-black.png";
+	private URL bPawnDirectory = Main.class.getResource("/pawn-black.png");
+	private URL bKnightDirectory = Main.class.getResource("/knight-black.png");
+	private URL bBishopDirectory = Main.class.getResource("/bishop-black.png");
+	private URL bRookDirectory = Main.class.getResource("/rook-black.png");
+	private URL bQueenDirectory = Main.class.getResource("/queen-black.png");
+	private URL bKingDirectory = Main.class.getResource("/King-black.png");
 
 	private Point firstCoordinate;
 	private Point coordinates;
@@ -195,13 +196,13 @@ public class MainWindowController {
 				images.add(node);
 		gridPane.getChildren().removeAll(images);
 
-		String path = "";
+		URL path = null; //standart piece
 		//draw board
 		for (int i = 0; i < game.position.board.length; i++)
 		{
 			for (int j = 0; j < game.position.board.length; j++)
 			{
-				path = "";
+				path = null;
 				//select piece type
 				switch(game.position.board[i][j])
 				{
@@ -220,12 +221,10 @@ public class MainWindowController {
 				}
 
 				//if a piece was selected
-				if (path != "")
+				if (path != null)
 				{
-					//create a new File
-					File file = new File(path);
 					//make it an Image
-				    Image image = new Image(file.toURI().toString());
+				    Image image = new Image(path.toString());
 				    //put it in to an image view
 				    ImageView iv = new ImageView(image);
 				    //so we can click the buttons beneath
