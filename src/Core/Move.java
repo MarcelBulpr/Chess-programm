@@ -427,7 +427,7 @@ public class Move {
 					{
 						//check if the path is free
 						for (int i = 1; i < Math.abs(differenceX); i++)
-							if (position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0 && Math.abs(position.board[this.origin.x][this.origin.y + (i * (Math.abs(differenceX)/differenceX) * -1)]) != 7)
+							if (position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y] != 0 && Math.abs(position.board[this.origin.x + (i * (Math.abs(differenceX)/differenceX) * -1)][this.origin.y]) != 7)
 								return false;
 					}
 					else if (differenceY != 0)
