@@ -1,28 +1,24 @@
 package GUI.view;
 
-
-import java.io.IOException;
-
-import Core.Game;
-import Core.Move;
-import GUI.Main;
 import GUI.MainWindowController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.*;
+/**
+ *Class that loads the functions of the Restart scene
+ * @author Nils Kruse, Marcel Baumann
+ */
 
 public class RestartController {
-	private Main main;
 	MainWindowController mainWindowController;
-
+	//restart when yes is clicked
 	@FXML
 	private void yes(ActionEvent e)
 	{
 		mainWindowController.restart();
 		((Button)e.getSource()).getScene().getWindow().hide();
 	}
-
+	//close the pop-up when no is clicked
 	@FXML
 	private void no(ActionEvent e)
 	{

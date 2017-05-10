@@ -59,8 +59,12 @@ public class Main extends Application {
 	primaryStage.show();
 
 	}
+	/**
+	 * Loading promotion when needed
+	 * @throws IOException
+	 */
 	public void showPromotionScene() throws IOException{
-//		if(promQueen.){
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("promotion/Promotion.fxml"));
 		AnchorPane root = loader.load();
@@ -75,7 +79,10 @@ public class Main extends Application {
 		promotion.setScene(scene);
 		promotion.showAndWait();
 		}
-//	}
+/**
+ * loading tutorial when needed
+ * @throws IOException
+ */
  public void showTutorialScene()throws IOException {
 	 FXMLLoader loader = new FXMLLoader();
 	 loader.setLocation(Main.class.getResource("Tutorial/Tutorial.fxml"));
@@ -86,6 +93,12 @@ public class Main extends Application {
 		Tutorial.setScene(scene);
 		Tutorial.show();
  }
+ /**
+  *  loading Endscreen when needed
+  * @param whiteWon
+  * @param blackWon
+  * @throws IOException
+  */
  public void showEndscreenScene(boolean whiteWon, boolean blackWon)throws IOException {
 	 FXMLLoader loader = new FXMLLoader();
 	 loader.setLocation(Main.class.getResource("Endscreen/Endscreen.fxml"));
@@ -104,6 +117,10 @@ public class Main extends Application {
 	Endscreen.setScene(scene);
 	Endscreen.show();
  }
+ /**
+  * loading Restartscene when needed
+  * @throws IOException
+  */
 	 public void showRestartScene()throws IOException {
 		 FXMLLoader loader = new FXMLLoader();
 		 loader.setLocation(Main.class.getResource("Restart/Restart.fxml"));

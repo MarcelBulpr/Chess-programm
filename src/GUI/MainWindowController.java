@@ -26,6 +26,7 @@ import javafx.stage.Stage;
  * Class that control the different functionality of the GUI
  */
 public class MainWindowController {
+	//Images of the figures
 	private URL wPawnDirectory = Main.class.getResource("/pawn-white.png");
 	private URL wKnightDirectory = Main.class.getResource("/knight-white.png");
 	private URL wBishopDirectory = Main.class.getResource("/bishop-white.png");
@@ -52,11 +53,7 @@ public class MainWindowController {
 	}
 	 Stage stage;
 	 Parent root;
-	/**
-	 * Event when a button is clicked
-	 *@param getting the ID of the clicked button
-	 * @throws IOException
-	 */
+
 	@FXML
 	Label mCountWhite;
 	@FXML
@@ -65,7 +62,11 @@ public class MainWindowController {
 	Label Notation;
 	@FXML
 	GridPane gp;
-
+	/**
+	 * Event when a button is clicked
+	 *@param getting the ID of the clicked button
+	 * @throws IOException
+	 */
 	@FXML
 	private void Button(ActionEvent e){
 		if (running)
@@ -109,11 +110,12 @@ public class MainWindowController {
 			}
 		}
 	}
-
+/**
+ * Function that contains all the parts that need to be controlled after every move
+ * @param move
+ */
 	public void execute(Move move)
 	{
-
-//		Point coordinates = game.getArrayCoordinates(((Control)e.getSource()).getId());
 		if(game.makeMove(move))
 		{
 			drawboard();
@@ -143,7 +145,6 @@ public class MainWindowController {
 					running = false;
 					main.showEndscreenScene(false, false);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -152,7 +153,10 @@ public class MainWindowController {
 		}
 		firstCoordinate = null;
 	}
-
+/**
+ * loads the Tutorial when needed
+ * @param e
+ */
 	@FXML
 	private void Tutorial(ActionEvent e){
 		try{
@@ -164,7 +168,9 @@ public class MainWindowController {
 		}
 	}
 
-
+/**
+ * loads the promotion when needed
+ */
 	public void queenPromotion()
 	{
 		Move move = new Move(game, firstCoordinate, coordinates,5);
@@ -189,7 +195,7 @@ public class MainWindowController {
 	private void drawboard()
 	{
 		GridPane gridPane = gp;
-		List<Node> images = new ArrayList();
+		List<Node> images = new ArrayList<Node>();
 		//Clear gridpane
 		for (Node node : gridPane.getChildren())
 			if (node instanceof ImageView)
@@ -237,7 +243,9 @@ public class MainWindowController {
 			}
 		}
 	}
-
+/**
+ * setting everything to null before restart
+ */
 	public void restart()
 	{
 		running = true;
